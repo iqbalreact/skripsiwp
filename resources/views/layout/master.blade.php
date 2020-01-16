@@ -24,15 +24,7 @@
 				<!-- Content area -->
 				<div class="content">
 
-					<!-- Simple panel -->
-					<div class="panel panel-flat">
-						<div class="panel-heading">
-							@yield('panel-title')
-						</div>
-
-						@yield('panel-body')
-					</div>
-					<!-- /simple panel -->
+					@yield('panel-body')
 
 					@include('layout.footer')
 

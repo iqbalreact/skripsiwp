@@ -18,7 +18,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <img src="{{asset('../assets/images/image.png')}}" alt="">
                     {{-- admin login name  --}}
-                    <span>@yield('admin-name')</span>
+                    <span>Admin</span>
                     <i class="caret"></i>
                 </a>
 

@@ -9,7 +9,7 @@
                     <a href="#" class="media-left"><img src="{{asset('../assets/images/image.png')}}" class="img-circle img-sm" alt=""></a>
                     <div class="media-body">
                         {{-- admin name section --}}
-                        <span class="media-heading text-semibold">@yield('admin-name')</span>
+                        <span class="media-heading text-semibold">Hello, Admin</span>
                         <div class="text-size-mini text-muted">
                             <i class="icon-pin text-size-small"></i> &nbsp;Pontianak
                         </div>
