@@ -14,6 +14,12 @@
 
 @section('breadcrumb')
 
+    <div class="breadcrumb-line breadcrumb-line-component">
+        <ul class="breadcrumb">
+            <li><a href="index.html"><i class="icon-home2 position-left"></i>Dashboard</a></li>
+        </ul>
+    </div>
+
 @endsection
 
 
@@ -27,6 +33,6 @@
 
 @section('panel-body')
 
-<p>Ini Halaman Dashboard</p>
+<p>Ini Halaman nilai kriteria</p>
     
 @endsection

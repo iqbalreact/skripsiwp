@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('admin/dashboard');
+});
+Route::get('/alternatif', function () {
+    return view('admin/alternatif');
+});
+Route::get('/kriteria', function () {
+    return view('admin/kriteria');
+});
+Route::get('/nilaikriteria', function () {
+    return view('admin/nilaikriteria');
+});
+Route::get('/perhitungan', function () {
+    return view('admin/perhitungan');
 });
