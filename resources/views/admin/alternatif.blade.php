@@ -15,10 +15,7 @@
 @section('breadcrumb')
 
     <div class="breadcrumb-line breadcrumb-line-component">
-        <ul class="breadcrumb">
-            <li><a href="{{url('dashboard')}}"><i class="icon-home2 position-left"></i>Home</a></li>
-            <li class="active">Alternatif</li>
-        </ul>
+        {{ Breadcrumbs::render('alternatif') }}
     </div>
 
 @endsection
@@ -40,10 +37,11 @@
     <table class="table datatable-basic table-striped">
         <thead>
             <tr>
-                <th style="width : 10%">No</th>
+                <th>No</th>
                 <th>Kode</th>
                 <th>Nama Alternatif</th>
                 <th>Deskripsi</th>
+                <th>Solusi</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -52,11 +50,21 @@
                 <td>1</td>
                 <td>Lorem, ipsum.</td>
                 <td>Traffic Court Referee</td>
-                <td>22 Jun 1972</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. laboriosam dolorem voluptates ab repellendus perferendis nulla suscipit?</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. laboriosam dolorem voluptates ab repellendus perferendis nulla suscipit?</td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil7"></i></button> &nbsp;
-                    <button type="button" class="btn btn-danger btn-sm" id="sweet_combine"><i class="icon-trash"></i></button>
-                    
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil"></i> Edit</a></li>
+                                <li><a href="#"><i class="icon-trash"></i> Hapus</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         </tbody>
@@ -87,15 +95,21 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Nama</label>
+                            <label class="control-label col-lg-2">Nama Penyakit</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Alternatif...">
+                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Penyakit...">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Keterangan</label>
+                            <label class="control-label col-lg-2">Deskripsi</label>
                             <div class="col-lg-10">
-                                <textarea rows="5" cols="5" name="ket" class="form-control" placeholder="Keterangan"></textarea>
+                                <textarea rows="5" cols="5" name="des" class="form-control" placeholder="Deskripsi Penyakit"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Solusi</label>
+                            <div class="col-lg-10">
+                                <textarea rows="5" cols="5" name="solusi" class="form-control" placeholder="Solusi"></textarea>
                             </div>
                         </div>
                     </fieldset>      
@@ -134,15 +148,21 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Nama</label>
+                            <label class="control-label col-lg-2">Nama Penyakit</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Alternatif...">
+                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Penyakit...">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Keterangan</label>
+                            <label class="control-label col-lg-2">Deskripsi</label>
                             <div class="col-lg-10">
-                                <textarea rows="5" cols="5" name="ket" class="form-control" placeholder="Keterangan"></textarea>
+                                <textarea rows="5" cols="5" name="des" class="form-control" placeholder="Deskripsi Penyakit"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Solusi</label>
+                            <div class="col-lg-10">
+                                <textarea rows="5" cols="5" name="solusi" class="form-control" placeholder="Solusi"></textarea>
                             </div>
                         </div>
                     </fieldset>      

@@ -15,10 +15,11 @@
 @section('breadcrumb')
 
     <div class="breadcrumb-line breadcrumb-line-component">
-        <ul class="breadcrumb">
+        {{ Breadcrumbs::render('nilaikriteria') }}
+        {{-- <ul class="breadcrumb">
             <li><a href="{{url('dashboard')}}"><i class="icon-home2 position-left"></i>Home</a></li>
             <li class="active">Nilai Kriteria</li>
-        </ul>
+        </ul> --}}
     </div>
 
 @endsection
@@ -62,8 +63,18 @@
                 <td>40</td>
                 <td>40</td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil7"></i></button> &nbsp;
-                    <button type="button" class="btn btn-danger btn-sm" id="sweet_combine"><i class="icon-trash"></i></button>
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil"></i> Edit</a></li>
+                                <li><a href="#"><i class="icon-trash"></i> Hapus</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         </tbody>
@@ -158,14 +169,18 @@
             <div class="modal-body">
                 <fieldset class="content-group">
                     <legend class="text-bold">Menambah Data Nilai Kriteria</legend>
+
                     <div class="form-group">
-                        <label class="control-label col-lg-2">Alternatif</label>
+                        <label class="control-label col-lg-2">Kode</label>
                         <div class="col-lg-10">
-                            <select name="atribut" class="form-control">
-                                <option value="opt1">Pilih</option>
-                                <option value="ben">Iqbal</option>
-                                <option value="cost">Ikhwan</option>
-                            </select>
+                            <input type="text" name="kd" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Nama Alternatif</label>
+                        <div class="col-lg-10">
+                            <input type="text" name="nama" class="form-control">
                         </div>
                     </div>
 

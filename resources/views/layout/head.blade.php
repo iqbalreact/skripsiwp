@@ -29,8 +29,8 @@
 
 	<script type="text/javascript" src="{{asset('assets/js/core/app.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/pages/components_modals.js')}}"></script>
+	<script type="text/javascript" src="assets/js/pages/components_loaders.js"></script>
 	<script type="text/javascript" src="{{asset('assets/js/pages/datatables_basic.js')}}"></script>
-
 	<!-- /theme JS files -->
 
 </head>

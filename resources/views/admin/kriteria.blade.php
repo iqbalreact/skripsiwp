@@ -15,10 +15,11 @@
 @section('breadcrumb')
 
     <div class="breadcrumb-line breadcrumb-line-component">
-        <ul class="breadcrumb">
+        {{ Breadcrumbs::render('kriteria') }}
+        {{-- <ul class="breadcrumb">
             <li><a href="{{url('dashboard')}}"><i class="icon-home2 position-left"></i>Home</a></li>
             <li class="active">Kriteria</li>
-        </ul>
+        </ul> --}}
     </div>
 
 @endsection
@@ -37,14 +38,15 @@
 
     </div>
 
-    <table class="table datatable-basic table-striped">
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th style="width : 10%">No</th>
+                <th>No</th>
                 <th>Kode</th>
                 <th>Nama Kriteria</th>
                 <th>Atribut</th>
-                <th class="text-center">Actions</th>
+                <th>Bobot</th>
+                <th class="text-center" >Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -53,21 +55,20 @@
                 <td>K01</td>
                 <td>Traffic Court Referee</td>
                 <td><span class="label label-success">Benefit</span></td>
+                <td>50</td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil7"></i></button> &nbsp;
-                    <button type="button" class="btn btn-danger btn-sm" id="sweet_combine"><i class="icon-trash"></i></button>
-                    
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>K02</td>
-                <td>Traffic Court Referee</td>
-                <td><span class="label label-danger">Cost</span></td>
-                <td class="text-center">
-                    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil7"></i></button> &nbsp;
-                    <button type="button" class="btn btn-danger btn-sm" id="sweet_combine"><i class="icon-trash"></i></button>
-                    
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil"></i> Edit</a></li>
+                                <li><a href="#"><i class="icon-trash"></i> Hapus</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         </tbody>
@@ -86,41 +87,46 @@
 
             <form class="form-horizontal" action="#">
             <div class="modal-body">
-                {{-- <h6 class="text-semibold"></h6> --}}
-                    <fieldset class="content-group">
-                        <legend class="text-bold">Menambah Data Kriteria</legend>
+                <fieldset class="content-group">
+                    <legend class="text-bold">Menambah Data Kriteria</legend>
 
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">Kode</label>
-                            <div class="col-lg-10">
-                                <input type="text" name="kode" class="form-control" readonly>
-                            </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Kode</label>
+                        <div class="col-lg-10">
+                            <input type="text" name="kode" class="form-control" readonly>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">Nama</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kriteria...">
-                            </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Nama</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kriteria...">
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">Atribut</label>
-                            <div class="col-lg-10">
-                                <select name="atribut" class="form-control">
-                                    <option value="opt1">Pilih</option>
-                                    <option value="ben">Benefit</option>
-                                    <option value="cost">Cost</option>
-                                </select>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Atribut</label>
+                        <div class="col-lg-10">
+                            <select name="atribut" class="form-control">
+                                <option value="opt1">Pilih</option>
+                                <option value="ben">Benefit</option>
+                                <option value="cost">Cost</option>
+                            </select>
                         </div>
-                    </fieldset>      
-                    <hr>    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn bg-teal-400">Submit<i class="icon-arrow-right14 position-right"></i></button>
-                </div>
-            </form>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Bobot</label>
+                        <div class="col-lg-10">
+                            <input type="number" class="form-control" name="bobot" placeholder="Masukan Nilai Bobot...">
+                        </div>
+                    </div>
+                </fieldset>      
+                <hr>    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                <button type="button" class="btn bg-teal-400">Submit<i class="icon-arrow-right14 position-right"></i></button>
+            </div>
+        </form>
         </div>
     </div>
 </div>
@@ -137,7 +143,6 @@
 
             <form class="form-horizontal" action="#">
             <div class="modal-body">
-                {{-- <h6 class="text-semibold"></h6> --}}
                     <fieldset class="content-group">
                         <legend class="text-bold">Mengedit Data Kriteria</legend>
 
@@ -154,6 +159,7 @@
                                 <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kriteria...">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label class="control-label col-lg-2">Atribut</label>
                             <div class="col-lg-10">
@@ -162,6 +168,13 @@
                                     <option value="ben">Benefit</option>
                                     <option value="cost">Cost</option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Bobot</label>
+                            <div class="col-lg-10">
+                                <input type="number" class="form-control" name="bobot" placeholder="Masukan Nilai Bobot...">
                             </div>
                         </div>
                     </fieldset>      
