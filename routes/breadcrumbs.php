@@ -8,19 +8,19 @@ Breadcrumbs::for('home', function ($trail) {
 // Home > Alternatif
 Breadcrumbs::for('alternatif', function ($trail) {
     $trail->parent('home');
-    $trail->push('Alternatif', route('alternatif'));
+    $trail->push('Alternatif', route('alternatif.index'));
 });
 
 // Home > Kriteria
 Breadcrumbs::for('kriteria', function ($trail) {
     $trail->parent('home');
-    $trail->push('Kriteria', route('kriteria'));
+    $trail->push('Kriteria', route('kriteria.index'));
 });
 
 // Home > Nilai Kriteria
-Breadcrumbs::for('nilaikriteria', function ($trail) {
+Breadcrumbs::for('subkriteria', function ($trail) {
     $trail->parent('home');
-    $trail->push('Nilai kriteria', route('nilaikriteria'));
+    $trail->push('Sub Kriteria', route('subkriteria.index'));
 });
 
 // Home > Perhitungan

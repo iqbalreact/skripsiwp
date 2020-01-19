@@ -38,35 +38,38 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Kode</th>
-                <th>Nama Alternatif</th>
+                <th style="width: 20%">Nama Alternatif</th>
                 <th>Deskripsi</th>
                 <th>Solusi</th>
-                <th class="text-center">Actions</th>
+                <th class="text-center" style="width: 20%">Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Lorem, ipsum.</td>
-                <td>Traffic Court Referee</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. laboriosam dolorem voluptates ab repellendus perferendis nulla suscipit?</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. laboriosam dolorem voluptates ab repellendus perferendis nulla suscipit?</td>
-                <td class="text-center">
-                    <ul class="icons-list">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-menu9"></i>
-                            </a>
+            @php
+                $no = 1;
+            @endphp
+            @if (count($alternatifs) != 0)
+                @foreach ($alternatifs as $alternatif)            
+                <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{$alternatif->nama }}</td>
+                    <td>{{$alternatif->deskripsi }}</td>
+                    <td>{{$alternatif->solusi }}</td>
+                    <td class="text-center">
+                        <form action="{{route('alternatif.destroy',$alternatif->id)}}" method="POST">
+                            <div class="btn-group">
+                                <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit"><i class="icon-pencil7"></i></button>
+                                <button type="submit" class="btn btn-danger" onclick="alert('Yakin ingi menghapus ?')" title="Hapus"><i class="icon-trash"></i> </button>
+                            </div>
+                            @csrf
+                            @method('DELETE')   
+                        </form>
+                    </td>
+                </tr>  
+                @endforeach
+            @else                
+            @endif
 
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil"></i> Edit</a></li>
-                                <li><a href="#"><i class="icon-trash"></i> Hapus</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
         </tbody>
     </table>
 </div>
@@ -81,35 +84,30 @@
                 <h6 class="modal-title">Tambah Data</h6>
             </div>
 
-            <form class="form-horizontal" action="#">
+            
+            
+            <form class="form-horizontal" action="{{route('alternatif.store')}}" method="POST">
+                @csrf
             <div class="modal-body">
-                {{-- <h6 class="text-semibold"></h6> --}}
                     <fieldset class="content-group">
                         <legend class="text-bold">Menambah Data Alternatif</legend>
-
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Kode</label>
-                            <div class="col-lg-10">
-                                <input type="text" name="kode" class="form-control" readonly>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
                             <label class="control-label col-lg-2">Nama Penyakit</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Penyakit...">
+                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukan Nama Penyakit..." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-lg-2">Deskripsi</label>
                             <div class="col-lg-10">
-                                <textarea rows="5" cols="5" name="des" class="form-control" placeholder="Deskripsi Penyakit"></textarea>
+                                <textarea rows="3" cols="3" name="deskripsi" id="deskripsi" class="form-control" placeholder="Deskripsi Penyakit" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-lg-2">Solusi</label>
                             <div class="col-lg-10">
-                                <textarea rows="5" cols="5" name="solusi" class="form-control" placeholder="Solusi"></textarea>
+                                <textarea rows="3" cols="3" name="solusi" id="solusi" class="form-control" placeholder="Solusi" required></textarea>
                             </div>
                         </div>
                     </fieldset>      
@@ -117,7 +115,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn bg-teal-400">Submit<i class="icon-arrow-right14 position-right"></i></button>
+                    <button type="submit" class="btn bg-teal-400">Submit<i class="icon-arrow-right14 position-right"></i></button>
                 </div>
             </form>
         </div>
@@ -134,9 +132,10 @@
                 <h6 class="modal-title">Edit Data</h6>
             </div>
 
-            <form class="form-horizontal" action="#">
+            <form class="form-horizontal">
+                {{-- @csrf
+                @method(PUT) --}}
             <div class="modal-body">
-                {{-- <h6 class="text-semibold"></h6> --}}
                     <fieldset class="content-group">
                         <legend class="text-bold">Mengedit Data Alternatif</legend>
 
@@ -156,7 +155,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2">Deskripsi</label>
                             <div class="col-lg-10">
-                                <textarea rows="5" cols="5" name="des" class="form-control" placeholder="Deskripsi Penyakit"></textarea>
+                                <textarea rows="3" cols="5" name="des" class="form-control" placeholder="Deskripsi Penyakit"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -177,4 +176,5 @@
     </div>
 </div>
 <!-- /edit modal -->
+
 @endsection

@@ -16,10 +16,6 @@
 
     <div class="breadcrumb-line breadcrumb-line-component">
         {{ Breadcrumbs::render('kriteria') }}
-        {{-- <ul class="breadcrumb">
-            <li><a href="{{url('dashboard')}}"><i class="icon-home2 position-left"></i>Home</a></li>
-            <li class="active">Kriteria</li>
-        </ul> --}}
     </div>
 
 @endsection
@@ -42,7 +38,6 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Kode</th>
                 <th>Nama Kriteria</th>
                 <th>Atribut</th>
                 <th>Bobot</th>
@@ -50,27 +45,36 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>K01</td>
-                <td>Traffic Court Referee</td>
-                <td><span class="label label-success">Benefit</span></td>
-                <td>50</td>
-                <td class="text-center">
-                    <ul class="icons-list">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-menu9"></i>
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#" data-toggle="modal" data-target="#modal_edit"><i class="icon-pencil"></i> Edit</a></li>
-                                <li><a href="#"><i class="icon-trash"></i> Hapus</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            @php
+                $no = 1;
+            @endphp
+            @if (count($kriterias) != 0)
+                @foreach ($kriterias as $kriteria)            
+                <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{$kriteria->nama }}</td>
+                    <td>
+                        @if ($kriteria->atribut === "ben")
+                            <span class="label label-success">Benefit</span>
+                        @else
+                            <span class="label label-danger">Cost</span>
+                        @endif
+                    </td>
+                    <td>{{$kriteria->bobot }}</td>
+                    <td class="text-center">
+                        <form action="{{route('kriteria.destroy',$kriteria->id)}}" method="POST">
+                            <div class="btn-group">
+                                <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit"><i class="icon-pencil7"></i></button>
+                                <button type="submit" class="btn btn-danger" onclick="alert('Yakin ingi menghapus ?')" title="Hapus"><i class="icon-trash"></i> </button>
+                            </div>
+                            @csrf
+                            @method('DELETE')   
+                        </form>
+                    </td>
+                </tr>  
+                @endforeach
+            @else                
+            @endif
         </tbody>
     </table>
 </div>
@@ -85,18 +89,11 @@
                 <h6 class="modal-title">Tambah Data</h6>
             </div>
 
-            <form class="form-horizontal" action="#">
+        <form class="form-horizontal" action="{{route('kriteria.store')}}" method="POST">
+            @csrf
             <div class="modal-body">
                 <fieldset class="content-group">
                     <legend class="text-bold">Menambah Data Kriteria</legend>
-
-                    <div class="form-group">
-                        <label class="control-label col-lg-2">Kode</label>
-                        <div class="col-lg-10">
-                            <input type="text" name="kode" class="form-control" readonly>
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <label class="control-label col-lg-2">Nama</label>
                         <div class="col-lg-10">
@@ -107,7 +104,6 @@
                         <label class="control-label col-lg-2">Atribut</label>
                         <div class="col-lg-10">
                             <select name="atribut" class="form-control">
-                                <option value="opt1">Pilih</option>
                                 <option value="ben">Benefit</option>
                                 <option value="cost">Cost</option>
                             </select>
@@ -124,7 +120,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                <button type="button" class="btn bg-teal-400">Submit<i class="icon-arrow-right14 position-right"></i></button>
+                <button type="submit" class="btn bg-teal-400">Submit<i class="icon-arrow-right14 position-right"></i></button>
             </div>
         </form>
         </div>
