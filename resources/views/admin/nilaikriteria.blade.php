@@ -16,10 +16,6 @@
 
     <div class="breadcrumb-line breadcrumb-line-component">
         {{ Breadcrumbs::render('nilaikriteria') }}
-        {{-- <ul class="breadcrumb">
-            <li><a href="{{url('dashboard')}}"><i class="icon-home2 position-left"></i>Home</a></li>
-            <li class="active">Nilai Kriteria</li>
-        </ul> --}}
     </div>
 
 @endsection

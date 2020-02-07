@@ -74,6 +74,8 @@ class AlternatifController extends Controller
      */
     public function update(Request $request, Alternatif $alternatif)
     {
+        $alternatif = Alternatif::find($id);
+        return response()->json($alternatif);
         //
     }
 

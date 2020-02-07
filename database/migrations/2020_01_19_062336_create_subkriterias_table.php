@@ -17,7 +17,7 @@ class CreateSubkriteriasTable extends Migration
             $table->bigIncrements('id');
             $table->integer('kriteria_id');
             $table->string('nama');
-            $table->integer('nilai');
+            $table->integer('bobot');
             $table->timestamps();
         });
     }

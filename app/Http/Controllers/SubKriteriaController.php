@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Subkriteria;
+use App\Kriteria;
+use DB;
 use Illuminate\Http\Request;
 
 class SubKriteriaController extends Controller
@@ -14,7 +16,11 @@ class SubKriteriaController extends Controller
      */
     public function index()
     {
-        return view ('admin.subkriteria');
+        $subkriterias = DB::table('subkriterias')
+                        ->join('kriterias', 'subkriterias.kriteria_id', '=', 'kriterias.id');
+        $kriterias = Kriteria::all();
+        // dd($subkriterias);
+        return view ('admin.subkriteria', compact('subkriterias', 'kriterias'));
         //
     }
 
@@ -36,6 +42,14 @@ class SubKriteriaController extends Controller
      */
     public function store(Request $request)
     {
+        //
+        $validasi = $request->validate([
+            'kriteria_id' => 'required',
+            'nama'=> 'required',
+            'bobot'=> 'required',
+        ]);
+        $subkriteria = Subkriteria::create($validasi);    
+        return redirect('subkriteria')->with('success', 'Berhasil menambahkan data kriteria');
         //
     }
 

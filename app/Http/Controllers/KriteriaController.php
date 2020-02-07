@@ -40,6 +40,8 @@ class KriteriaController extends Controller
         $validasi = $request->validate([
             'nama' => 'required',
             'atribut'=> 'required',
+            'range'=> 'required',
+            'bobot'=> 'required',
         ]);
         $kriteria = Kriteria::create($validasi);    
         return redirect('kriteria')->with('success', 'Berhasil menambahkan data kriteria');
@@ -87,7 +89,9 @@ class KriteriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Kriteria $kriteria)
-    {
+    {   
+        $kriteria->delete();
+        // return redirect('kriteria');
         //
     }
 }

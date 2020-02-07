@@ -17,6 +17,7 @@ class CreateKriteriasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama');
             $table->string('atribut');
+            $table->integer('range');
             $table->integer('bobot');
             $table->timestamps();
         });

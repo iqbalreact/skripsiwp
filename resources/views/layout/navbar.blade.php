@@ -18,13 +18,23 @@
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <img src="{{asset('../assets/images/image.png')}}" alt="">
                     {{-- admin login name  --}}
-                    <span>Admin</span>
+                    <span>{{ Auth::user()->name }}</span>
                     <i class="caret"></i>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="#"><i class="icon-cog5"></i> Ganti Password</a></li>
-                    <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                    
                 </ul>
             </li>
         </ul>

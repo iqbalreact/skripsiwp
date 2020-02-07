@@ -40,6 +40,7 @@
                 <th>No</th>
                 <th>Nama Kriteria</th>
                 <th>Atribut</th>
+                <th>Range</th>
                 <th>Bobot</th>
                 <th class="text-center" >Actions</th>
             </tr>
@@ -60,6 +61,7 @@
                             <span class="label label-danger">Cost</span>
                         @endif
                     </td>
+                    <td>{{$kriteria->range }}</td>
                     <td>{{$kriteria->bobot }}</td>
                     <td class="text-center">
                         <form action="{{route('kriteria.destroy',$kriteria->id)}}" method="POST">
@@ -110,9 +112,15 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-lg-2">Range (%)</label>
+                        <div class="col-lg-10">
+                            <input type="number" class="form-control" name="range" placeholder="Masukan Nilai Bobot...">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label col-lg-2">Bobot</label>
                         <div class="col-lg-10">
-                            <input type="number" class="form-control" name="bobot" placeholder="Masukan Nilai Bobot...">
+                            <input type="number" class="form-control" name="bobot" step="0.01" placeholder="Masukan Nilai Bobot...">
                         </div>
                     </div>
                 </fieldset>      

@@ -8,7 +8,7 @@ class Kriteria extends Model
 {
     //
     protected $fillable = [
-        'nama', 'atribut', 'bobot',
+        'nama', 'atribut', 'range', 'bobot',
     ];
 
 }
