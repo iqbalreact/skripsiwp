@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Subkriteria;
 use App\Kriteria;
-use DB;
 use Illuminate\Http\Request;
 
 class SubKriteriaController extends Controller
@@ -16,10 +15,8 @@ class SubKriteriaController extends Controller
      */
     public function index()
     {
-        $subkriterias = DB::table('subkriterias')
-                        ->join('kriterias', 'subkriterias.kriteria_id', '=', 'kriterias.id');
+        $subkriterias = Subkriteria::all();
         $kriterias = Kriteria::all();
-        // dd($subkriterias);
         return view ('admin.subkriteria', compact('subkriterias', 'kriterias'));
         //
     }
