@@ -8,6 +8,6 @@ class Subkriteria extends Model
 {
     //
     protected $fillable = [
-        'kriteria_id', 'nama', 'bobot',
+        'kriteria_id', 'namasub', 'bobotsub',
     ];
 }

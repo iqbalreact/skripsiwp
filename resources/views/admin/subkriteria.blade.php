@@ -52,9 +52,9 @@
                 @foreach ($subkriterias as $subkriteria)            
                 <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$subkriteria->kriteri_id }}</td>
                     <td>{{$subkriteria->nama }}</td>
-                    <td>{{$subkriteria->bobot }}</td>
+                    <td>{{$subkriteria->namasub }}</td>
+                    <td>{{$subkriteria->bobotsub }}</td>
                     <td class="text-center">
                         <form action="{{route('subkriteria.destroy',$subkriteria->id)}}" method="POST">
                             <div class="btn-group">
@@ -104,13 +104,13 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">Nama Sub Kriteria</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kriteria...">
+                            <input type="text" class="form-control" name="namasub" placeholder="Masukan Nama Sub Kriteria...">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-2">Bobot</label>
                         <div class="col-lg-10">
-                            <input type="number" class="form-control" name="bobot" placeholder="Masukan Nilai Bobot...">
+                            <input type="number" class="form-control" name="bobotsub" placeholder="Masukan Nilai Bobot...">
                         </div>
                     </div>
                 </fieldset>      
