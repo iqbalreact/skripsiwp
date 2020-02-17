@@ -20,21 +20,27 @@
 			<div class="section-top-border">
 				<h3 class="mb-30">Informasi Tentang Pengembang Aplikasi</h3>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-3">
 						<div class="single-defination">
-                            <h4 class="mb-20">Pengembang Aplikasi</h4>
-                            <a href="{{asset('user/img/elements/g1.jpg')}}" class="img-pop-up">
-                                <div class="single-gallery-image" style="background: url(user/img/elements/g1.jpg);"></div>
-                            </a>
-							<p><b>Nama :</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat veritatis id hic.</p>
+							<h4 class="mb-20">Pengembang Aplikasi</h4>
+							@if (count($tentangs) != 0)
+								@foreach ($tentangs as $tentang)
+								<img width="150px" src="{{ url('/tentang/'.$tentang->gambar) }}">          
+								
+							</div>
 						</div>
-                    </div>
-                    <div class="col-md-6">
-						<div class="single-defination">
-                            <h4 class="mb-20">Deskripsi Aplikasi</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe labore recusandae facilis magni totam nostrum non, unde, dolor laborum sequi optio soluta nihil corrupti nobis sed quisquam, minima repudiandae pariatur?</p>
+						<div class="col-md-9">
+							<div class="single-defination">
+								<h4 class="mb-20">Deskripsi Aplikasi</h4>
+								<p><b>Nama Pengembang :</b> {{$tentang->nama }} </p>
+								<p>
+									{{$tentang->keterangan}}									
+								</p>
+							</div>
 						</div>
-                    </div>
+						@endforeach
+					@else                
+					@endif
                     
 				</div>
 			</div>
@@ -43,3 +49,4 @@
 	<!-- End Align Area -->
 
 @endsection
+

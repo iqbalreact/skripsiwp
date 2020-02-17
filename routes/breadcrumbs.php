@@ -17,10 +17,29 @@ Breadcrumbs::for('kriteria', function ($trail) {
     $trail->push('Kriteria', route('kriteria.index'));
 });
 
+Breadcrumbs::for('nilaialternatif', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Nilai Alternatif', route('nilaialternatif.index'));
+});
+
+
 // Home > Nilai Kriteria
 Breadcrumbs::for('subkriteria', function ($trail) {
     $trail->parent('home');
     $trail->push('Sub Kriteria', route('subkriteria.index'));
+});
+Breadcrumbs::for('jenisanggrek', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Jenis Anggrek', route('jenisanggrek.index'));
+});
+Breadcrumbs::for('penyakitanggrek', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Penyakit Anggrek', route('penyakitanggrek.index'));
+});
+
+Breadcrumbs::for('tentang', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Tentang Aplikasi', route('tentang.index'));
 });
 
 // Home > Perhitungan
@@ -29,14 +48,3 @@ Breadcrumbs::for('perhitungan', function ($trail) {
     $trail->push('Perhitungan', route('perhitungan'));
 });
 
-// // Home > Blog > [Category]
-// Breadcrumbs::for('category', function ($trail, $category) {
-//     $trail->parent('blog');
-//     $trail->push($category->title, route('category', $category->id));
-// });
-
-// Home > Blog > [Category] > [Post]
-// Breadcrumbs::for('post', function ($trail, $post) {
-//     $trail->parent('category', $post->category);
-//     $trail->push($post->title, route('post', $post->id));
-// });

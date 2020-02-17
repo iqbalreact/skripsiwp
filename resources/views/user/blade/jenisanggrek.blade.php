@@ -20,61 +20,19 @@
 			<div class="section-top-border">
 				<h3 class="mb-30">Jenis Tanaman Anggrek</h3>
 				<div class="row">
-					<div class="col-md-4">
-						<div class="single-defination">
-                            <h4 class="mb-20">Anggrek 01</h4>
-                            <a href="{{asset('user/img/elements/g1.jpg')}}" class="img-pop-up">
-                                <div class="single-gallery-image" style="background: url(user/img/elements/g1.jpg);"></div>
-                            </a>
-							<p><b>Keterangan :</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat veritatis id hic.</p>
-						</div>
-                    </div>
-                    <div class="col-md-4">
-						<div class="single-defination">
-                            <h4 class="mb-20">Anggrek 02</h4>
-                            <a href="{{asset('user/img/elements/g1.jpg')}}" class="img-pop-up">
-                                <div class="single-gallery-image" style="background: url(user/img/elements/g1.jpg);"></div>
-                            </a>
-							<p><b>Keterangan :</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat veritatis id hic.</p>
-						</div>
-                    </div>
-                    <div class="col-md-4">
-						<div class="single-defination">
-                            <h4 class="mb-20">Anggrek 03</h4>
-                            <a href="{{asset('user/img/elements/g1.jpg')}}" class="img-pop-up">
-                                <div class="single-gallery-image" style="background: url(user/img/elements/g1.jpg);"></div>
-                            </a>
-							<p><b>Keterangan :</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat veritatis id hic.</p>
-						</div>
-                    </div>
-                    <div class="col-md-4">
-						<div class="single-defination">
-                            <h4 class="mb-20">Anggrek 04</h4>
-                            <a href="{{asset('user/img/elements/g1.jpg')}}" class="img-pop-up">
-                                <div class="single-gallery-image" style="background: url(user/img/elements/g1.jpg);"></div>
-                            </a>
-							<p><b>Keterangan :</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat veritatis id hic.</p>
-						</div>
-                    </div>
-                    <div class="col-md-4">
-						<div class="single-defination">
-                            <h4 class="mb-20">Anggrek 05</h4>
-                            <a href="{{asset('user/img/elements/g1.jpg')}}" class="img-pop-up">
-                                <div class="single-gallery-image" style="background: url(user/img/elements/g1.jpg);"></div>
-                            </a>
-							<p><b>Keterangan :</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat veritatis id hic.</p>
-						</div>
-                    </div>
-                    <div class="col-md-4">
-						<div class="single-defination">
-                            <h4 class="mb-20">Anggrek 06</h4>
-                            <a href="{{asset('user/img/elements/g1.jpg')}}" class="img-pop-up">
-                                <div class="single-gallery-image" style="background: url(user/img/elements/g1.jpg);"></div>
-                            </a>
-							<p><b>Keterangan :</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat veritatis id hic.</p>
-						</div>
-                    </div>
-                    
+                    @if (count($jenisanggreks) != 0)
+                        @foreach ($jenisanggreks as $jenisanggrek)
+                        
+                        <div class="col-md-4">
+                            <div class="single-defination text-center">
+                                <h4 class="mb-20">{{$jenisanggrek->nama}}</h4>
+                                <img width="300px" src="{{ url('/anggrek/'.$jenisanggrek->gambar) }}">
+                                <p style="text-align : justify"><b>Keterangan :</b> {{$jenisanggrek->keterangan}}</p>
+                            </div>
+                        </div>                    
+						@endforeach
+					@else                
+					@endif
 				</div>
 			</div>
 		</div>

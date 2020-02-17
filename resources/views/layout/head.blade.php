@@ -22,14 +22,14 @@
 	<!-- /core JS files -->
 	
 	<script type="text/javascript" src="{{asset('assets/js/plugins/tables/datatables/datatables.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('assets/js/plugins/notifications/bootbox.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('assets/js/plugins/notifications/sweet_alert.min.js')}}"></script>
+	{{-- <script type="text/javascript" src="{{asset('assets/js/plugins/notifications/bootbox.min.js')}}"></script> --}}
+	{{-- <script type="text/javascript" src="{{asset('assets/js/plugins/notifications/sweet_alert.min.js')}}"></script> --}}
 	<script type="text/javascript" src="{{asset('assets/js/plugins/forms/selects/select2.min.js')}}"></script>
 	<!-- Theme JS files -->
 
 	<script type="text/javascript" src="{{asset('assets/js/core/app.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/pages/components_modals.js')}}"></script>
-	<script type="text/javascript" src="assets/js/pages/components_loaders.js"></script>
+	<script type="text/javascript" src="{{asset('assets/js/pages/components_loaders.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/pages/datatables_basic.js')}}"></script>
 	<!-- /theme JS files -->
 

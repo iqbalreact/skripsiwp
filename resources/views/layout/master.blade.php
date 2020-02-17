@@ -29,6 +29,11 @@
 							<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
 							<span class="text-semibold">Well done!</span> {{session('success')}}
 						</div>
+					@elseif (session('error'))
+					<div class="alert bg-danger alert-styled-right">
+						<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+						<span class="text-semibold">{{session('error')}} !</span> 
+					</div>
 					@endif
 					@yield('panel-body')
 

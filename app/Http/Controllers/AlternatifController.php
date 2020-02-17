@@ -40,7 +40,7 @@ class AlternatifController extends Controller
             'solusi' => 'required',
         ]);
         $alternatif = Alternatif::create($validasi);    
-        return redirect('alternatif')->with('success', 'Berhasil menambahkan data alternatif');
+        return redirect('admin/alternatif')->with('success', 'Berhasil menambahkan data alternatif');
     }
 
     /**
@@ -74,8 +74,6 @@ class AlternatifController extends Controller
      */
     public function update(Request $request, Alternatif $alternatif)
     {
-        $alternatif = Alternatif::find($id);
-        return response()->json($alternatif);
         //
     }
 
@@ -89,6 +87,6 @@ class AlternatifController extends Controller
     {
         //
         $alternatif->delete();
-        return redirect('alternatif');
+        return redirect('admin/alternatif')->with('error', 'Berhasil Dihapus');;
     }
 }

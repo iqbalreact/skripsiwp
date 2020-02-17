@@ -38,13 +38,12 @@ class KriteriaController extends Controller
     public function store(Request $request)
     {   
         $validasi = $request->validate([
-            'nama' => 'required',
+            'namakriteria' => 'required',
             'atribut'=> 'required',
             'range'=> 'required',
-            'bobot'=> 'required',
         ]);
         $kriteria = Kriteria::create($validasi);    
-        return redirect('kriteria')->with('success', 'Berhasil menambahkan data kriteria');
+        return redirect('admin/kriteria')->with('success', 'Berhasil menambahkan data kriteria');
         //
     }
 
@@ -54,7 +53,7 @@ class KriteriaController extends Controller
      * @param  \App\Kriteria  $kriteria
      * @return \Illuminate\Http\Response
      */
-    public function show(Kriteria $kriteria)
+    public function show(Kriteria $kriterium)
     {
         //
     }
@@ -65,7 +64,7 @@ class KriteriaController extends Controller
      * @param  \App\Kriteria  $kriteria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kriteria $kriteria)
+    public function edit(Kriteria $kriterium)
     {
         //
     }
@@ -77,7 +76,7 @@ class KriteriaController extends Controller
      * @param  \App\Kriteria  $kriteria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kriteria $kriteria)
+    public function update(Request $request, Kriteria $kriterium)
     {
         //
     }
@@ -88,10 +87,10 @@ class KriteriaController extends Controller
      * @param  \App\Kriteria  $kriteria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kriteria $kriteria)
+    public function destroy(Kriteria $kriterium)
     {   
-        $kriteria->delete();
-        // return redirect('kriteria');
+        $kriterium->delete();
+        return redirect('admin/kriteria');
         //
     }
 }

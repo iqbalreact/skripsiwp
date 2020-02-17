@@ -34,7 +34,7 @@
 
     </div>
 
-    <table class="table datatable-basic table-striped">
+    <table class="table datatable-basic">
         <thead>
             <tr>
                 <th>No</th>
@@ -52,14 +52,15 @@
                 @foreach ($alternatifs as $alternatif)            
                 <tr>
                     <td>{{$no++}}</td>
+                    {{-- <td>{{$alternatif->id }}</td> --}}
                     <td>{{$alternatif->nama }}</td>
                     <td>{{$alternatif->deskripsi }}</td>
                     <td>{{$alternatif->solusi }}</td>
                     <td class="text-center">
-                        <form action="{{route('alternatif.destroy',$alternatif->id)}}" method="POST">
-                            <div class="btn-group">
-                                <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit"><i class="icon-pencil7"></i></button>
-                                <button type="submit" class="btn btn-danger" onclick="alert('Yakin ingi menghapus ?')" title="Hapus"><i class="icon-trash"></i> </button>
+                        <div class="btn-group">
+                            <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit" onclick="getDataEditAlternatif({{$alternatif->id}})"><i class="icon-pencil7"></i></button>
+                            <form action="{{route('alternatif.destroy',$alternatif->id)}}" method="POST">
+                            <button type="submit" class="btn btn-danger" onclick="alert('Yakin ingi menghapus ?')" title="Hapus"><i class="icon-trash"></i> </button>
                             </div>
                             @csrf
                             @method('DELETE')   
@@ -82,10 +83,7 @@
             <div class="modal-header bg-teal-400">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h6 class="modal-title">Tambah Data</h6>
-            </div>
-
-            
-            
+            </div>            
             <form class="form-horizontal" action="{{route('alternatif.store')}}" method="POST">
                 @csrf
             <div class="modal-body">
@@ -95,19 +93,19 @@
 
                             <label class="control-label col-lg-2">Nama Penyakit</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukan Nama Penyakit..." required>
+                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Penyakit..." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-lg-2">Deskripsi</label>
                             <div class="col-lg-10">
-                                <textarea rows="3" cols="3" name="deskripsi" id="deskripsi" class="form-control" placeholder="Deskripsi Penyakit" required></textarea>
+                                <textarea rows="3" cols="3" name="deskripsi" class="form-control" placeholder="Deskripsi Penyakit" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-lg-2">Solusi</label>
                             <div class="col-lg-10">
-                                <textarea rows="3" cols="3" name="solusi" id="solusi" class="form-control" placeholder="Solusi" required></textarea>
+                                <textarea rows="3" cols="3" name="solusi"  class="form-control" placeholder="Solusi" required></textarea>
                             </div>
                         </div>
                     </fieldset>      
@@ -132,36 +130,28 @@
                 <h6 class="modal-title">Edit Data</h6>
             </div>
 
-            <form class="form-horizontal">
-                {{-- @csrf
-                @method(PUT) --}}
+            <form class="form-horizontal" method="POST" action="{{route('update-alternatif')}}" enctype="multipart/form-data">
+                @csrf
             <div class="modal-body">
                     <fieldset class="content-group">
                         <legend class="text-bold">Mengedit Data Alternatif</legend>
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">Kode</label>
-                            <div class="col-lg-10">
-                                <input type="text" name="kode" class="form-control" readonly>
-                            </div>
-                        </div>
-
+                        <input type="hidden" name="id" id="idAlternatif">
                         <div class="form-group">
                             <label class="control-label col-lg-2">Nama Penyakit</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Penyakit...">
+                                <input type="text" class="form-control" id="namaAlternatif" name="nama">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-lg-2">Deskripsi</label>
                             <div class="col-lg-10">
-                                <textarea rows="3" cols="5" name="des" class="form-control" placeholder="Deskripsi Penyakit"></textarea>
+                                <textarea rows="3" cols="5" name="des" id="desAlternatif" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-lg-2">Solusi</label>
                             <div class="col-lg-10">
-                                <textarea rows="5" cols="5" name="solusi" class="form-control" placeholder="Solusi"></textarea>
+                                <textarea rows="5" cols="5" name="solusi" id="solusiAlternatif" class="form-control"></textarea>
                             </div>
                         </div>
                     </fieldset>      
@@ -169,12 +159,26 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn bg-warning">Update<i class="icon-reset position-right"></i></button>
+                    <button type="submit" class="btn bg-warning">Update<i class="icon-reset position-right"></i></button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- /edit modal -->
+<script>
+    var url_id = '{{ url('getData/alternatif')}}';
+    function getDataEditAlternatif(id){
+        console.log(id)
+        var url_alternatif = url_id + '/' + id 
+        console.log(url_alternatif)
+        $.get(url_alternatif, function(data){
+            $('#idAlternatif').val(data.id);
+            $('#namaAlternatif').val(data.nama);
+            $('#desAlternatif').val(data.deskripsi);
+            $('#solusiAlternatif').val(data.solusi);
+        });
+    }
 
+</script>
 @endsection

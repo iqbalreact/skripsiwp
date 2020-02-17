@@ -34,7 +34,7 @@
 
     </div>
 
-    <table class="table table-striped">
+    <table class="table datatable-basic">
         <thead>
             <tr>
                 <th>No</th>
@@ -52,13 +52,13 @@
                 @foreach ($subkriterias as $subkriteria)            
                 <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$subkriteria->nama }}</td>
+                    <td>{{$subkriteria->namakriteria }}</td>
                     <td>{{$subkriteria->namasub }}</td>
                     <td>{{$subkriteria->bobotsub }}</td>
                     <td class="text-center">
-                        <form action="{{route('subkriteria.destroy',$subkriteria->id)}}" method="POST">
-                            <div class="btn-group">
-                                <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit"><i class="icon-pencil7"></i></button>
+                        <div class="btn-group">
+                            <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit" onclick="getDataEditSubKriteria({{$subkriteria->id}})"><i class="icon-pencil7"></i></button>
+                            <form action="{{route('subkriteria.destroy',$subkriteria->id)}}" method="POST">
                                 <button type="submit" class="btn btn-danger" onclick="alert('Yakin ingi menghapus ?')" title="Hapus"><i class="icon-trash"></i> </button>
                             </div>
                             @csrf
@@ -95,7 +95,7 @@
                             <select name="kriteria_id" class="form-control">
                                 <option value="">Pilih</option>
                                 @foreach ($kriterias as $kriteria) 
-                                <option value="{{$kriteria->id}}">{{$kriteria->nama}}</option>
+                                <option value="{{$kriteria->id}}">{{$kriteria->namakriteria}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -135,40 +135,23 @@
                 <h6 class="modal-title">Edit Data</h6>
             </div>
 
-            <form class="form-horizontal" action="#">
-            <div class="modal-body">
+            <form class="form-horizontal" action="{{route('update-subkriteria')}}" method="post">
+                @csrf
+                <div class="modal-body">
                     <fieldset class="content-group">
-                        <legend class="text-bold">Mengedit Data Kriteria</legend>
-
+                        <legend class="text-bold">Menambah Data Sub  Kriteria</legend>
+                        <input type="hidden" name="id" id="idSubKriteria">
+                        <input type="hidden" name="kriteria_id" id="idKriteria">
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Kode</label>
+                            <label class="control-label col-lg-2">Nama Sub Kriteria</label>
                             <div class="col-lg-10">
-                                <input type="text" name="kode" class="form-control" readonly>
+                                <input type="text" class="form-control" name="namasub" id="namaSubkriteria" placeholder="Masukan Nama Sub Kriteria...">
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">Nama</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kriteria...">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">Atribut</label>
-                            <div class="col-lg-10">
-                                <select name="atribut" class="form-control">
-                                    <option value="opt1">Pilih</option>
-                                    <option value="ben">Benefit</option>
-                                    <option value="cost">Cost</option>
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label class="control-label col-lg-2">Bobot</label>
                             <div class="col-lg-10">
-                                <input type="number" class="form-control" name="bobot" placeholder="Masukan Nilai Bobot...">
+                                <input type="number" class="form-control" name="bobotsub" id="bobotSubkriteria" placeholder="Masukan Nilai Bobot...">
                             </div>
                         </div>
                     </fieldset>      
@@ -176,11 +159,25 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn bg-warning">Update<i class="icon-reset position-right"></i></button>
+                    <button type="submit" class="btn bg-teal-400">Submit<i class="icon-arrow-right14 position-right"></i></button>
                 </div>
-            </form>
         </div>
     </div>
 </div>
 <!-- /edit modal -->
+<script>
+    var url_id = '{{ url('getData/subkriteria')}}';
+    function getDataEditSubKriteria(id){
+        // console.log(id)
+        var url_subkriteria = url_id + '/' + id 
+        console.log(url_subkriteria)
+        $.get(url_subkriteria, function(data){
+            $('#idSubKriteria').val(data.id);
+            $('#idKriteria').val(data.kriteria_id);
+            $('#namaSubkriteria').val(data.namasub);
+            $('#bobotSubkriteria').val(data.bobotsub);
+        });
+    }
+
+</script>
 @endsection

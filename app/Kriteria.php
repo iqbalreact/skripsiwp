@@ -8,7 +8,16 @@ class Kriteria extends Model
 {
     //
     protected $fillable = [
-        'nama', 'atribut', 'range', 'bobot',
+        'namakriteria', 'atribut', 'range',
     ];
+    public function subkriterias(){
+        return $this->hasMany('App\Subkriteria');
+    }
+
+    public function alternatifs(){
+        return $this->belongsToMany('App\Alternatif')->withPivot('bobotnilai');;
+    }
+    
+
 
 }

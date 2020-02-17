@@ -28,64 +28,22 @@
                                         <p>We provide online instant cash loans with quick approval that suit your term length</p>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="single_field">
-                                        <label for="">Kondisi Lingkungan</label>
+                                @if (count($subkriterias) != 0)
+                                    @foreach ($subkriterias as $subkriterias)            
+                                    <div class="col-md-12">
+                                        <div class="single_field">
+                                        <label for="">Kondisi <b>{{$subkriterias->namakriteria}}</b></label>
                                         <select class="wide">
                                             <option data-display="Pilih">Pilih</option>
-                                            <option value="1">Lembab</option>
-                                            <option value="2">Teduh</option>
-                                            <option value="2">Kering</option>
-                                          </select>
+                                            @foreach($subkriterias->Subkriterias as $sub)
+                                                <option value="1">{{$sub->namasub}}</option>
+                                            @endforeach
+                                        </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single_field">
-                                        <label for="">Kondisi Daun</label>
-                                        <select class="wide">
-                                            <option data-display="Pilih">Pilih</option>
-                                            <option value="1">Bercak berwarna ungu kehitaman</option>
-                                            <option value="2">Bercak bulat kuning kehijauan ada
-                                                bintik jamur</option>
-                                            <option value="2">Menguning dan layu</option>
-                                            <option value="2">Keriput</option>
-                                          </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single_field">
-                                        <label for="">Kondisi Batang</label>
-                                        <select class="wide">
-                                            <option data-display="Pilih">Pilih</option>
-                                            <option value="1">Membusuk dan ada jamur</option>
-                                            <option value="2">Membusuk</option>
-                                          </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single_field">
-                                        <label for="">Kondisi Umbi/Akar</label>
-                                        <select class="wide">
-                                            <option data-display="Pilih">Pilih</option>
-                                            <option value="1">Berwarna keunguan dan layu</option>
-                                            <option value="2">Akar bekas dipotong berwarna
-                                                ungu</option>
-                                            <option value="2">Akar membusuk</option>
-                                          </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single_field">
-                                        <label for="">Kondisi Bunga</label>
-                                        <select class="wide">
-                                            <option data-display="Pilih">Pilih</option>
-                                            <option value="1">Bercak coklat</option>
-                                            <option value="2">Tangkai bunga mengering dan
-                                                berkerut</option>
-                                            <option value="2">Bunga kehitaman dan rontok</option>
-                                          </select>
-                                    </div>
-                                </div>
+                                    @endforeach
+                                @else                
+                                @endif
                                 <div class="col-md-12">
                                     <div class="submit_btn">
                                         <button class="boxed-btn3" type="submit">Cek Penyakit</button>

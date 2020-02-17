@@ -41,7 +41,6 @@
                 <th>Nama Kriteria</th>
                 <th>Atribut</th>
                 <th>Range</th>
-                <th>Bobot</th>
                 <th class="text-center" >Actions</th>
             </tr>
         </thead>
@@ -53,7 +52,7 @@
                 @foreach ($kriterias as $kriteria)            
                 <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$kriteria->nama }}</td>
+                    <td>{{$kriteria->namakriteria }}</td>
                     <td>
                         @if ($kriteria->atribut === "ben")
                             <span class="label label-success">Benefit</span>
@@ -62,11 +61,10 @@
                         @endif
                     </td>
                     <td>{{$kriteria->range }}</td>
-                    <td>{{$kriteria->bobot }}</td>
                     <td class="text-center">
-                        <form action="{{route('kriteria.destroy',$kriteria->id)}}" method="POST">
-                            <div class="btn-group">
-                                <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit"><i class="icon-pencil7"></i></button>
+                        <div class="btn-group">
+                            <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit"><i class="icon-pencil7" onclick="getDataEditKriteria({{$kriteria->id}})"></i></button>
+                            <form action="{{route('kriteria.destroy',$kriteria->id)}}" method="POST">
                                 <button type="submit" class="btn btn-danger" onclick="alert('Yakin ingi menghapus ?')" title="Hapus"><i class="icon-trash"></i> </button>
                             </div>
                             @csrf
@@ -99,7 +97,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">Nama</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kriteria...">
+                            <input type="text" class="form-control" name="namakriteria" placeholder="Masukan Nama Kriteria...">
                         </div>
                     </div>
                     <div class="form-group">
@@ -115,12 +113,6 @@
                         <label class="control-label col-lg-2">Range (%)</label>
                         <div class="col-lg-10">
                             <input type="number" class="form-control" name="range" placeholder="Masukan Nilai Bobot...">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-lg-2">Bobot</label>
-                        <div class="col-lg-10">
-                            <input type="number" class="form-control" name="bobot" step="0.01" placeholder="Masukan Nilai Bobot...">
                         </div>
                     </div>
                 </fieldset>      
@@ -145,40 +137,33 @@
                 <h6 class="modal-title">Edit Data</h6>
             </div>
 
-            <form class="form-horizontal" action="#">
+            <form class="form-horizontal" action="{{route('update-kriteria')}}" method="post">
+                @csrf
             <div class="modal-body">
                     <fieldset class="content-group">
                         <legend class="text-bold">Mengedit Data Kriteria</legend>
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">Kode</label>
-                            <div class="col-lg-10">
-                                <input type="text" name="kode" class="form-control" readonly>
-                            </div>
-                        </div>
-
+                        <input type="hidden" name="id" id="idKriteria">
                         <div class="form-group">
                             <label class="control-label col-lg-2">Nama</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kriteria...">
+                                <input type="text" class="form-control" name="namakriteria" id="namaKriteria" placeholder="Masukan Nama Kriteria...">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-lg-2">Atribut</label>
                             <div class="col-lg-10">
-                                <select name="atribut" class="form-control">
+                                <select name="atribut" id="atributKriteria" class="form-control">
                                     <option value="opt1">Pilih</option>
                                     <option value="ben">Benefit</option>
                                     <option value="cost">Cost</option>
                                 </select>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Bobot</label>
+                            <label class="control-label col-lg-2">Range (%)</label>
                             <div class="col-lg-10">
-                                <input type="number" class="form-control" name="bobot" placeholder="Masukan Nilai Bobot...">
+                                <input type="number" class="form-control" name="range" id="rangeKriteria" placeholder="Masukan Nilai Bobot...">
                             </div>
                         </div>
                     </fieldset>      
@@ -186,11 +171,27 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn bg-warning">Update<i class="icon-reset position-right"></i></button>
+                    <button type="submit" class="btn bg-warning">Update<i class="icon-reset position-right"></i></button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- /edit modal -->
+
+<script>
+    var url_id = '{{ url('getData/kriteria')}}';
+    function getDataEditKriteria(id){
+        // console.log(id)
+        var url_alternatif = url_id + '/' + id 
+        // console.log(url_alternatif)
+        $.get(url_alternatif, function(data){
+            $('#idKriteria').val(data.id);
+            $('#namaKriteria').val(data.namakriteria);
+            $('#atributKriteria').val(data.atribut);
+            $('#rangeKriteria').val(data.range);
+        });
+    }
+
+</script>
 @endsection

@@ -4,7 +4,7 @@
         <div class="footer_top">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-md-6 col-lg-3">
+                    <div class="col-xl-4 col-md-4 col-lg-4">
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                             <div class="footer_logo">
                                 <a href="#">
@@ -43,34 +43,7 @@
 
                         </div>
                     </div>
-                    <div class="col-xl-2 col-md-6 col-lg-3">
-                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.1s" data-wow-delay=".4s">
-                            <h3 class="footer_title">
-                                Services
-                            </h3>
-                            <ul>
-                                <li><a href="#">SEO/SEM </a></li>
-                                <li><a href="#">Web design </a></li>
-                                <li><a href="#">Ecommerce</a></li>
-                                <li><a href="#">Digital marketing</a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".5s">
-                            <h3 class="footer_title">
-                                Useful Links
-                            </h3>
-                            <ul>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#"> Contact</a></li>
-                                <li><a href="#">Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-lg-4">
+                    <div class="col-xl-4 col-md-4 col-lg-4">
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
                             <h3 class="footer_title">
                                 Subscribe
@@ -81,6 +54,12 @@
                             </form>
                             <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems
                                 luckily.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-lg-4">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
+                            <h4>Tentang</h4>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos porro quaerat dolorem non vel repudiandae fuga quae aperiam inventore iure mollitia, odio natus reprehenderit quo, dolorum sequi architecto commodi nam?
                         </div>
                     </div>
                 </div>

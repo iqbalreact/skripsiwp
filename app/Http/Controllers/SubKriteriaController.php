@@ -20,7 +20,8 @@ class SubKriteriaController extends Controller
         $kriterias = Kriteria::all();
         $subkriterias = DB::table('subkriterias')
             ->join('kriterias', 'subkriterias.kriteria_id', '=', 'kriterias.id')
-            ->select('subkriterias.*', 'kriterias.nama')
+            ->select('subkriterias.*', 'kriterias.namakriteria')
+            ->orderBy('kriterias.namakriteria')
             ->get();
         // dd($subkriteria);
         return view ('admin.subkriteria', compact('subkriterias', 'kriterias'));
@@ -52,7 +53,7 @@ class SubKriteriaController extends Controller
             'bobotsub'=> 'required',
         ]);
         $subkriteria = Subkriteria::create($validasi);    
-        return redirect('subkriteria')->with('success', 'Berhasil menambahkan data kriteria');
+        return redirect('admin/subkriteria')->with('success', 'Berhasil menambahkan data kriteria');
         //
     }
 
@@ -96,8 +97,10 @@ class SubKriteriaController extends Controller
      * @param  \App\Subkriteria  $subkriteria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subkriteria $subkriteria)
-    {
+    public function destroy(Subkriteria $subkriterium)
+    {   
+        $subkriterium->delete();
+        return redirect('admin/subkriteria');
         //
     }
 }

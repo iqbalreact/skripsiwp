@@ -10,39 +10,42 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('user.blade.beranda');
-});
-Route::get('/tentang', function () {
-    return view('user.blade.tentang');
+
+Route::group(['middleware'=> ['auth']], function() {
+    Route::group(['prefix'=>'admin'],function(){
+        Route::get('/', 'HomeController@index')->name('admin');
+        Route::resource('/alternatif', 'AlternatifController');
+        Route::resource('/kriteria', 'KriteriaController');
+        Route::resource('/subkriteria', 'SubkriteriaController');
+        Route::resource('/nilaialternatif', 'NilaialternatifController');
+        Route::resource('/jenisanggrek', 'JenisanggrekController');
+        Route::resource('/penyakitanggrek', 'PenyakitanggrekController');
+        Route::resource('/tentang', 'TentangController');
+        Route::post('/updateAlternatif', 'GetDataController@updateAlternatif')->name('update-alternatif');
+        Route::post('/updateKriteria', 'GetDataController@updateKriteria')->name('update-kriteria');
+        Route::post('/updateSubKriteria', 'GetDataController@updateSubKriteria')->name('update-subkriteria');
+        Route::post('/updateNilai', 'GetDataController@updateNilai')->name('update-nilai');
+    });
+
+    Route::group(['prefix'=>'getData'],function(){
+        Route::get('/alternatif/{alternatif} ', 'GetDataController@getAlternatif')->name('getAlternatif');
+        Route::get('/kriteria/{kriterium} ', 'GetDataController@getKriteria')->name('getKriteria');
+        Route::get('/subkriteria/{subkriterium} ', 'GetDataController@getSubKriteria')->name('getSubKriteria');
+        Route::get('/subbobot/{subkriterium} ', 'GetDataController@getSubBobot')->name('getSubBobot');
+    });
 });
 
-Route::get('/jenisanggrek', function () {
-    return view('user.blade.jenisanggrek');
-});
-
-Route::get('/jenispenyakit', function () {
-    return view('user.blade.jenispenyakit');
-});
-Route::get('/saran', function () {
-    return view('user.blade.saran');
-});
-Route::get('/cekpenyakit', function () {
-    return view('user.blade.cekpenyakit');
-});
-
-
-
-Route::get('/admin', 'HomeController@index')->name('admin');
-Route::resource('/alternatif', 'AlternatifController');
-Route::resource('/kriteria', 'KriteriaController');
-Route::resource('/subkriteria', 'SubkriteriaController');
 Auth::routes();
 
+Route::get('/', 'UserController@beranda')->name('beranda');
+Route::get('/tentangaplikasi', 'UserController@tentang')->name('tentang');
+Route::get('/jenispenyakit', 'UserController@penyakitanggrek')->name('penyakitanggrek');
+Route::get('/jenisanggrek', 'UserController@jenisanggrek')->name('jenisanggrek');
+Route::get('/cekpenyakit', 'UserController@cekpenyakit')->name('cekpenyakit');
+Route::get('/saran', 'UserController@saran')->name('saran');
+Route::get('/perhitunganwp', 'UserController@perhitunganWP')->name('perhitunganwp');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
 
 
