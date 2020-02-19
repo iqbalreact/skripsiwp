@@ -1,7 +1,7 @@
 
     <!-- footer start -->
     <footer class="footer">
-        <div class="footer_top">
+        {{-- <div class="footer_top">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-md-4 col-lg-4">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="copy-right_text wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".3s">
             <div class="container">
                 <div class="footer_border"></div>

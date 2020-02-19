@@ -164,12 +164,12 @@
                                     <div class="card wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".6s">
                                         <div class="card-header" id="headingThree4">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
+                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree5" aria-expanded="false" aria-controls="collapseThree5">
                                                     Virus Mosaik Cymbidium
                                                 </button>
                                             </h5>
                                         </div>
-                                        <div id="collapseThree4" class="collapse" aria-labelledby="headingThree4" data-parent="#accordion" style="">
+                                        <div id="collapseThree5" class="collapse" aria-labelledby="headingThree4" data-parent="#accordion" style="">
                                             <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems luckily or picture placing drawing.
                                             </div>
                                         </div>
@@ -177,12 +177,12 @@
                                     <div class="card wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".6s">
                                         <div class="card-header" id="headingThree4">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
+                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree6" aria-expanded="false" aria-controls="collapseThree6">
                                                     Hawar Bunga
                                                 </button>
                                             </h5>
                                         </div>
-                                        <div id="collapseThree4" class="collapse" aria-labelledby="headingThree4" data-parent="#accordion" style="">
+                                        <div id="collapseThree6" class="collapse" aria-labelledby="headingThree4" data-parent="#accordion" style="">
                                             <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems luckily or picture placing drawing.
                                             </div>
                                         </div>
@@ -190,12 +190,12 @@
                                     <div class="card wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".6s">
                                         <div class="card-header" id="headingThree4">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
+                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree7" aria-expanded="false" aria-controls="collapseThree7">
                                                     Busuk coklat
                                                 </button>
                                             </h5>
                                         </div>
-                                        <div id="collapseThree4" class="collapse" aria-labelledby="headingThree4" data-parent="#accordion" style="">
+                                        <div id="collapseThree7" class="collapse" aria-labelledby="headingThree4" data-parent="#accordion" style="">
                                             <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems luckily or picture placing drawing.
                                             </div>
                                         </div>
@@ -207,6 +207,6 @@
                 </div>
             </div>
         </div>
+        <div style="margin-top : 150px;"></div>
 
-    
 @endsection

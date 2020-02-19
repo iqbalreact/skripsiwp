@@ -52,7 +52,7 @@ class TentangController extends Controller
         }
 
         $anggrek->save();
-        return redirect()->back()->with('success', 'Berhasil menambahkan Tentang Aplikasi');;
+        return redirect()->back()->with('success', 'Berhasil menambahkan Tentang Aplikasi');
     }
 
     /**

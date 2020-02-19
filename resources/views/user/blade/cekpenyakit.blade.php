@@ -20,7 +20,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
-                        <form action="#" class="apply_form">
+                        <form action="{{route('perhitunganwp')}}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="apply_info_text text-center">
@@ -33,10 +34,11 @@
                                     <div class="col-md-12">
                                         <div class="single_field">
                                         <label for="">Kondisi <b>{{$subkriterias->namakriteria}}</b></label>
-                                        <select class="wide">
-                                            <option data-display="Pilih">Pilih</option>
+                                        <input type="hidden" name="kriteria[]" value="{{$subkriterias->id}}">
+                                        <select class="wide" name="bobot[]">
+                                            <option>Pilih</option>
                                             @foreach($subkriterias->Subkriterias as $sub)
-                                                <option value="1">{{$sub->namasub}}</option>
+                                                <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                             @endforeach
                                         </select>
                                         </div>

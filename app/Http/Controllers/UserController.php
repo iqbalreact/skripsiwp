@@ -10,7 +10,7 @@ use App\Alternatif;
 use App\Nilaialternatif;
 use DB;
 use Illuminate\Http\Request;
-
+use Illuminate\Routing\Controller;
 class UserController extends Controller
 {
     //
@@ -47,17 +47,16 @@ class UserController extends Controller
         return view ('user.blade.cekpenyakit', compact('subkriterias')); 
     }
 
-    public function perhitunganWP()
+    public function perhitunganWP(Request $request)
     {   
         $dataalternatif = Alternatif::with('Kriterias')->get();
 
         $Wj = DB::table('kriterias')->select('range')->sum('range');
         $rangekriteria = DB::table('kriterias')->select('*')->get();
-
-
-        echo "Total WJ : ". $Wj."<br>";
-        echo "<hr>";
-        echo "Normalisasi Bobot Kriteria <br>";
+        
+        $kriteriaData = array();
+        
+        // Normalisasi Bobot Kriteria
         $normalisasi = array ();
         foreach ($rangekriteria as $value) {
             # code...
@@ -65,53 +64,155 @@ class UserController extends Controller
             $namakriteria = $value->namakriteria;
             $range = $value->range;
             $bobotkriteriaNew = $range/$Wj;
-            echo $namakriteria.": ".$bobotkriteriaNew;
-            echo "<br>";
             $normalisasi[] = array('kriteria_id' => $idkriteria, 'namakriteria' => $namakriteria, 'bobot' => $bobotkriteriaNew);
         }
+        // End Normalisasi Bobot
 
-        echo "<hr>";
-        // print("<pre>".print_r($normalisai,true)."</pre>");
-        echo "<hr>";
-
-        echo "Nilai Alternatif <br><br>";
-
-        // dd($dataalternatif);
-
-        $dataNew = array();
+        // mencocokan id kriteria dengan bobot
         foreach ($dataalternatif as $key => $item) {
-            # code...
             $nama = $item->nama;
-            echo "Nama Alternatif: ".$nama;
-            echo "<br>";
-            foreach ($item->Kriterias as $value) {
-                # code...
+            $datakriteria = $item->Kriterias;
+            foreach ($datakriteria as $key => $value) {
                 $idkriteria = $value->id;
-                $nilainya = $value->pivot->bobotnilai;
-
-                        
-                foreach ($normalisasi as $key1) {
-
-                    $kriteriaID = $key1['kriteria_id'];
-                    if ($idkriteria == $kriteriaID) {
-                        echo "Id Kriteria : ".$idkriteria;
-                        echo "<br>";
-                        echo "bobot alternatif : ".$nilainya;
-                        echo "<br>";
-                    }
-                    else{
-                        echo "ID Beda Dong";
-                        echo "<br>";
-                    }
-
-                }
-
-
+                $namakriteria = $value->namakriteria;
+                $pivot = $value->pivot->bobotnilai;
+                foreach ($normalisasi as $key => $nilai) {
+                    $kriteriaid = $nilai['kriteria_id'];
+                    $kriterianama = $nilai['namakriteria'];
+                    $bobot = $nilai['bobot'];
+                    if($kriteriaid == $idkriteria){
+                        $pangkat = pow($pivot, $bobot);
+                        $kriteriaData [] = array('nama' => $nama, 'kriteria' => $kriterianama, 'vektor' => $pangkat);
+                    }   
+                }                
             }
-            echo "<br>";
+        }
+        // end
+        
+        // Grup Kriteria data
+        $result = array();
+        foreach ($kriteriaData as $element) {
+            $result[$element['nama']][] = $element;
+        }
+        // end grup 
+
+        // Menentukan Nilai Vektor S Kriteria
+        $totalVektorS = array ();
+        foreach ($result as $key3 => $kali) {
+            $nilaiawal = 1;
+            foreach ($kali as $kalivektor => $valueNew) {
+                $nama = $valueNew['nama'];
+                $nilai = $valueNew['vektor'];
+                $nilaiawal = $nilai * $nilaiawal;
+            }
+            $totalVektorS [] = array ('nama'=>$nama, 'vektorS'=>$nilaiawal);
+        }
+        // End Menentukan Nilai Vektor S
+    
+
+        //Data User 
+        // return response()->json($request);
+
+        $kriteriausers = $request->kriteria;
+        $bobotusers = $request->bobot;
+
+        $inputanuser = array('Id Kriteria' => $kriteriausers, 'Bobot Kriteria' => $bobotusers);
+
+        $nilaiusers = array ();
+        foreach ($kriteriausers as $key => $kriteriauser) {
+            # code...
+            foreach ($bobotusers as $key2 => $bobotuser) {
+                # code...
+                if ($key == $key2) {
+                    # code...
+                    $nilaiusers[] = array('kriteria' => $kriteriauser, 'bobot' => $bobotuser);
+                }
+            }
         }
 
-    }
+        $kriteriaDataUser = array ();
+        foreach ($nilaiusers as $key => $valueuser) {
+            # code...
 
+            $kriteria = $valueuser['kriteria'];
+            $bobotkriteriauser = $valueuser['bobot'];
+            
+            foreach ($normalisasi as $key => $nilai2) {
+                $kriteriaid = $nilai2['kriteria_id'];
+                $kriterianama = $nilai2['namakriteria'];
+                $bobot = $nilai2['bobot'];
+
+                if($kriteriaid == $kriteria){
+
+                    $pangkatuser = pow($bobotkriteriauser, $bobot);
+                    $kriteriaDataUser [] = array('nama' => $kriteria, 'kriteria' => $kriterianama, 'vektor' => $pangkatuser);
+                }   
+            }       
+        }
+        // print_r($kriteriaDataUser);
+
+        // return response()->json($kriteriaDataUser);
+
+            $totalVektorSUser = array();
+            $nilaiawal = 1;
+            foreach ($kriteriaDataUser as $valueNewUser) {
+                $nilai = $valueNewUser['vektor'];
+                $nilaiawal = $nilai * $nilaiawal;
+            }
+            $totalVektorSUser [] = ($nilaiawal);
+       
+        // return response()->json(array('vektorWP' => $totalVektorS, 'vektorUser' => $totalVektorSUser));
+        
+        $sumvektorSwp = 0;
+        $vektorUser = $totalVektorSUser[0];
+        
+        foreach($totalVektorS as $num => $values) {
+            $sumvektorSwp += $values[ 'vektorS' ];
+        }
+
+        // Menentukan Nilai VektorStotal
+        $vj = $sumvektorSwp+$vektorUser;
+        $Stotal = array($vj);
+        // end Nilai VektorStotal
+
+        $dataVwp = array ();
+        // Menentukan nilai VektosS/VJ ==> Data Alternatif
+        foreach ($totalVektorS as $key => $valueVektorS) {
+            # code...
+            $newAlternatif = $valueVektorS['nama'];
+            $vektorAlternatif = $valueVektorS['vektorS'];
+
+            $vektorVwp = $vektorAlternatif/$vj;
+
+            // echo $newAlternatif." = ".$vektorVwp;
+            // echo "<br>";
+
+            $dataVwp[] = array('nama'=>$newAlternatif, 'vektorv'=>$vektorVwp);
+
+        }
+
+        // Menentukan nilai VektorS/Vj ==> Data User
+        $vektorVusers = $vektorUser/$vj;
+        // end
+
+        //Mencari Nilai Vektor V terdekat dengan Vektor V user 
+        foreach ($dataVwp as $key => $cariV) {
+            $Vwp = $cariV['vektorv'];
+            $namaVwp = $cariV['nama'];
+            $hasil = $vektorVusers - $Vwp;
+            $urutan1 = abs($hasil);
+            $dataVwp[$key]['selisih']=$urutan1;
+        }
+        // end
+
+        $vektorVuser = array($vektorVusers);
+        
+
+        usort($dataVwp, function ($a, $b) {
+            return $a['selisih'] <=> $b['selisih'];
+        });
+        return view ('user.blade.hasil', compact('totalVektorS','totalVektorSUser','dataVwp','vektorVuser')); 
+    }
+    
 
 }

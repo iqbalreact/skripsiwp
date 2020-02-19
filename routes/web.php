@@ -43,7 +43,7 @@ Route::get('/jenispenyakit', 'UserController@penyakitanggrek')->name('penyakitan
 Route::get('/jenisanggrek', 'UserController@jenisanggrek')->name('jenisanggrek');
 Route::get('/cekpenyakit', 'UserController@cekpenyakit')->name('cekpenyakit');
 Route::get('/saran', 'UserController@saran')->name('saran');
-Route::get('/perhitunganwp', 'UserController@perhitunganWP')->name('perhitunganwp');
+Route::post('/perhitunganwp', 'UserController@perhitunganWP')->name('perhitunganwp');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
