@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Jenisanggrek;
+use App\Saran;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
 
-class JenisanggrekController extends Controller
+class SaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,8 @@ class JenisanggrekController extends Controller
     public function index()
     {
         //
-        $jenisanggreks = Jenisanggrek::All();
-        return view ('admin.jenisanggrek', ['jenisanggreks' => $jenisanggreks]);
-
+        $sarans = Saran::All();
+        return view ('admin.saran',compact('sarans'));
     }
 
     /**
@@ -41,23 +38,6 @@ class JenisanggrekController extends Controller
     public function store(Request $request)
     {
         //
-        $anggrek = new Jenisanggrek;
-        $anggrek->nama = $request->nama;
-        $anggrek->keterangan = $request->keterangan;
-        // $anggrek = $request->file('gambar');
-        // $tujuan_upload = 'upload/anggrek';
-        // $anggrek->move($tujuan_upload,$anggrek->getClientOriginalName());
-        if($request->has('image')) {
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            // dd($image);
-            $image->move(public_path('anggrek'), $filename);
-            $anggrek->gambar = $request->file('image')->getClientOriginalName();
-        }
-
-        $anggrek->save();
-        return redirect()->back();
-
     }
 
     /**
@@ -100,14 +80,11 @@ class JenisanggrekController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jenisanggrek $jenisanggrek)
+    public function destroy(Saran $saran)
     {
         //
-        $data = Jenisanggrek::findOrFail($jenisanggrek);
-        // dd($data[0]->gambar);
-        $directory = 'anggrek/'.$data[0]->gambar;
-        File::delete($directory);
-        $data->each->delete();
-        return redirect()->back();
+        // echo $saran;/
+        $saran->delete();
+        return redirect('admin/saran')->with('error', 'Berhasil Dihapus');
     }
 }

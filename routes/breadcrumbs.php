@@ -17,6 +17,11 @@ Breadcrumbs::for('kriteria', function ($trail) {
     $trail->push('Kriteria', route('kriteria.index'));
 });
 
+Breadcrumbs::for('saran', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Saran', route('saran.index'));
+});
+
 Breadcrumbs::for('nilaialternatif', function ($trail) {
     $trail->parent('home');
     $trail->push('Nilai Alternatif', route('nilaialternatif.index'));

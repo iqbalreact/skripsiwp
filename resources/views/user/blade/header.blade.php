@@ -16,7 +16,7 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="{{url('/')}}">home</a></li>
+                                            <li><a href="{{url('/')}}">Beranda</a></li>
                                             <li><a href="{{url('/tentangaplikasi')}}">Tentang</a></li>
                                             <li><a href="{{url('/jenisanggrek')}}">Jenis Anggrek</a></li>
                                             <li><a href="{{url('/jenispenyakit')}}">Jenis Penyakit</a></li>

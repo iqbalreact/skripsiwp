@@ -87,6 +87,6 @@ class AlternatifController extends Controller
     {
         //
         $alternatif->delete();
-        return redirect('admin/alternatif')->with('error', 'Berhasil Dihapus');;
+        return redirect('admin/alternatif')->with('error', 'Berhasil Dihapus');
     }
 }

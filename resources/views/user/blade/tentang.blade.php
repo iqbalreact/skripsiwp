@@ -25,14 +25,14 @@
 							<h4 class="mb-20">Pengembang Aplikasi</h4>
 							@if (count($tentangs) != 0)
 								@foreach ($tentangs as $tentang)
-								<img width="150px" src="{{ url('/tentang/'.$tentang->gambar) }}">          
+								<img width="150px" src="{{ url('/tentang/'.$tentang->gambar) }}">
+								<p><b>Nama:</b> {{$tentang->nama }} </p>        
 								
 							</div>
 						</div>
 						<div class="col-md-9">
 							<div class="single-defination">
-								<h4 class="mb-20">Deskripsi Aplikasi</h4>
-								<p><b>Nama Pengembang :</b> {{$tentang->nama }} </p>
+								<h4 class="mb-20">Deskripsi Aplikasi</h4>	
 								<p>
 									{{$tentang->keterangan}}									
 								</p>

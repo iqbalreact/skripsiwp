@@ -29,7 +29,6 @@
     </div>
 
     <div class="panel-body">
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias fugit, animi iste atque similique perferendis unde ipsam laborum minima vel?</span><br><br>
         <button type="button" class="btn bg-teal-400 btn-labeled" data-toggle="modal" data-target="#modal_add"><b><i class="icon-user-plus"></i></b> Tambah Kriteria</button>
 
     </div>
@@ -64,12 +63,14 @@
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit"><i class="icon-pencil7" onclick="getDataEditKriteria({{$kriteria->id}})"></i></button>
-                            <form action="{{route('kriteria.destroy',$kriteria->id)}}" method="POST">
+                            <a href="#modalHapusMhs" data-toggle="modal" id="tombol-hapus-mhs" data-target="#modalHapusMhs" class="btn btn-danger btn-sm" title="Hapus" data-idmhs="{{$kriteria->id}}"><i class="icon-trash"></i></a>
+
+                        </div>
+                            {{-- <form action="{{route('kriteria.destroy',$kriteria->id)}}" method="POST">
                                 <button type="submit" class="btn btn-danger" onclick="alert('Yakin ingi menghapus ?')" title="Hapus"><i class="icon-trash"></i> </button>
-                            </div>
                             @csrf
                             @method('DELETE')   
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>  
                 @endforeach
@@ -79,7 +80,29 @@
     </table>
 </div>
 
-
+<!-- Modal Hapus Mahasiswa -->
+<div class="modal fade" id="modalHapusMhs" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus Mahasiswa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('hapus-kriteria')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="id_mahasiswa" id="id-mahasiswa">
+                    <p class="text-center mt-3">Apakah Anda Yakin Akan Menghapus ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Yakin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Add/Success modal -->
 <div id="modal_add" class="modal fade">
     <div class="modal-dialog">
@@ -182,9 +205,7 @@
 <script>
     var url_id = '{{ url('getData/kriteria')}}';
     function getDataEditKriteria(id){
-        // console.log(id)
         var url_alternatif = url_id + '/' + id 
-        // console.log(url_alternatif)
         $.get(url_alternatif, function(data){
             $('#idKriteria').val(data.id);
             $('#namaKriteria').val(data.namakriteria);
@@ -193,5 +214,13 @@
         });
     }
 
+</script>
+
+<script>
+    $(document).on("click", "#tombol-hapus-mhs", function() {
+        var idMahasiswa = $(this).data('idmhs');
+        $('#id-mahasiswa').val(idMahasiswa);
+
+    });
 </script>
 @endsection

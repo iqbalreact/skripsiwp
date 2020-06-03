@@ -26,7 +26,7 @@
                                 <div class="col-lg-12">
                                     <div class="apply_info_text text-center">
                                         <h3>Masukan Gejala Pada Tanaman Anggrek</h3>
-                                        <p>We provide online instant cash loans with quick approval that suit your term length</p>
+                                        <p>Silahkan pilih gejala pada tanaman anggrek</p>
                                     </div>
                                 </div>
                                 @if (count($subkriterias) != 0)
@@ -35,8 +35,8 @@
                                         <div class="single_field">
                                         <label for="">Kondisi <b>{{$subkriterias->namakriteria}}</b></label>
                                         <input type="hidden" name="kriteria[]" value="{{$subkriterias->id}}">
-                                        <select class="wide" name="bobot[]">
-                                            <option>Pilih</option>
+                                        <select name="bobot[]" required>
+                                            <option value="">Pilih</option>
                                             @foreach($subkriterias->Subkriterias as $sub)
                                                 <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                             @endforeach

@@ -8,6 +8,7 @@ use App\Subkriteria;
 use App\Kriteria;
 use App\Alternatif;
 use App\Nilaialternatif;
+use App\Saran;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -41,6 +42,19 @@ class UserController extends Controller
         // $tentangs = Penyakitanggrek::All();
         return view ('user.blade.saran'); 
     }
+
+    public function addsaran(Request $request)
+    {
+        // dd($request);
+        $saran = new Saran;
+        $saran->nama = $request->nama;
+        $saran->email = $request->email;
+        $saran->saran = $request->saran;
+        $saran->save();
+        
+        return redirect('/');
+    }
+
     public function cekpenyakit()
     {
         $subkriterias = Kriteria::with('Subkriterias')->get();

@@ -55,7 +55,7 @@ class PenyakitanggrekController extends Controller
         }
 
         $anggrek->save();
-        return redirect()->back()->with('success', 'Berhasil menambahkan Penyakit Anggrek');;
+        return redirect()->back()->with('success', 'Berhasil menambahkan Penyakit Anggrek');
 
     }
 

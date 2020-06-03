@@ -27,14 +27,14 @@
                     <!-- Main -->
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                     <li><a href="{{url('/admin')}}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-                    <li><a href="{{url('/admin/alternatif')}}"><i class="icon-drawer"></i> <span>Data Alternatif/Penyakit</span></a></li>
+                    <li><a href="{{url('/admin/alternatif')}}"><i class="icon-drawer"></i> <span>Data Alternatif</span></a></li>
                     <li><a href="{{url('/admin/kriteria')}}"><i class="icon-grid4"></i> <span>Data Kriteria</span></a></li>
                     <li><a href="{{url('/admin/subkriteria')}}"><i class="icon-typewriter"></i> <span>Data Sub Kriteria</span></a></li>
                     <li><a href="{{url('/admin/nilaialternatif')}}"><i class="icon-typewriter"></i> <span>Data Nilai Alternatif</span></a></li>
                     <li><a href="{{url('/admin/tentang')}}"><i class="icon-clipboard3"></i> <span>Kelola Tentang</span></a></li>
                     <li><a href="{{url('/admin/jenisanggrek')}}"><i class="icon-pushpin"></i> <span>Kelola Jenis Anggrek</span></a></li>
                     <li><a href="{{url('/admin/penyakitanggrek')}}"><i class="icon-pushpin"></i> <span>Kelola Penyakit Anggrek</span></a></li>
-                    <li><a href="#"><i class="icon-mailbox"></i> <span>Kelola Saran</span></a></li>
+                    <li><a href="{{url('/admin/saran')}}"><i class="icon-mailbox"></i> <span>Kelola Saran</span></a></li>
 
                 </ul>
             </div>

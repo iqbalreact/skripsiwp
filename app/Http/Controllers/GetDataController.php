@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Alternatif;
 use App\Kriteria;
 use App\SubKriteria;
+use App\Penyakitanggrek;
+use App\Tentang;
+use App\Jenisanggrek;
+use App\Alternatif_kriteria;
 use Illuminate\Http\Request;
 use DB;
 
@@ -22,6 +26,90 @@ class GetDataController extends Controller
     public function getSubKriteria(Request $request, $subkriteria){
         $getsubkriteria = Subkriteria::where('id',$subkriteria)->first();
         return response()->json($getsubkriteria);
+    }
+    public function getNilaAlternatif(Request $request, $nilaialternatif){
+        $getnilaialternatif = DB::table('alternatif_kriteria')
+            ->join('alternatifs', 'alternatif_kriteria.alternatif_id', '=', 'alternatifs.id')
+            ->join('kriterias', 'alternatif_kriteria.kriteria_id', '=', 'kriterias.id')
+            ->where('alternatif_kriteria.id', $nilaialternatif)
+            ->get();
+        // $getnilaialternatif = Alternatif_kriteria::where('id',$nilaialternatif)->first();
+        return response()->json($getnilaialternatif);
+    }
+
+    public function getTentang(Request $request, $tentang){
+        $gettentang = Tentang::where('id',$tentang)->first();
+        return response()->json($gettentang);
+    }
+
+    public function getJenisAnggrek(Request $request, $jenisanggrek){
+        $getjenisanggrek = Jenisanggrek::where('id',$jenisanggrek)->first();
+        return response()->json($getjenisanggrek);
+    }
+
+    public function getPenyakitAnggrek(Request $request, $penyakitanggrek){
+        $getpenyakitanggrek = Penyakitanggrek::where('id',$penyakitanggrek)->first();
+        return response()->json($getpenyakitanggrek);
+    }
+
+    public function updateNilaiAlternatif(Request $request) {
+        DB::table('alternatif_kriteria')->where('id',$request->id)->update([
+            'kriteria_id' => $request->kriteria_id,
+            'bobotnilai' => $request->bobotnilai,
+        ]);
+        return redirect()->back();
+    }
+    
+    public function updateTentang(Request $request) {
+        
+        if($request->has('image')) {
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('tentang'), $filename);
+            $gambar = $request->file('image')->getClientOriginalName();
+            
+        }
+        DB::table('tentangs')->where('id',$request->id)->update([
+            'nama' => $request->nama,
+            'keterangan' => $request->keterangan,
+            'gambar' => $gambar,
+        ]);
+        return redirect()->back();
+    }
+
+    public function updateJenisAnggrek(Request $request) {
+        // dd($request->all());
+        if($request->has('image')) {
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('anggrek'), $filename);
+            $gambar = $request->file('image')->getClientOriginalName();
+            
+        }
+        // echo $gambar;
+        DB::table('jenisanggreks')->where('id',$request->id)->update([
+            'nama' => $request->nama,
+            'keterangan' => $request->keterangan,
+            'gambar' => $gambar,
+        ]);
+        return redirect()->back();
+    }
+
+    public function updatePenyakitAnggrek(Request $request) {
+        if($request->has('image')) {
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('penyakit'), $filename);
+            $gambar = $request->file('image')->getClientOriginalName();
+            
+        }
+        
+        DB::table('penyakitanggreks')->where('id',$request->id)->update([
+            'nama' => $request->nama,
+            'keterangan' => $request->keterangan,
+            'gambar' => $gambar,
+        ]);
+        return redirect()->back();
     }
 
     public function updateAlternatif(Request $request) {
