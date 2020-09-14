@@ -17,7 +17,7 @@
       <!-- ================ contact section start ================= -->
       <section class="contact-section section_padding">
         <div class="container">
-          <div class="row">
+          <div class="row" style="margin-top: -100px">
             <div class="col-12">
               <h2 class="contact-title">Tulis Saran Anda Disini</h2>
             </div>

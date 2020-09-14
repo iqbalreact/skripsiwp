@@ -18,7 +18,7 @@
 	<div class="whole-wrap">
 		<div class="container box_1170">
 			<div class="section-top-border">
-				<h3 class="mb-30">Jenis Penyakit Tanaman Anggrek</h3>
+				{{-- <h3 class="mb-30">Jenis Penyakit Tanaman Anggrek</h3> --}}
                 <div class="row">
                     @if (count($penyakitanggreks) != 0)
                         @foreach ($penyakitanggreks as $penyakitanggrek)

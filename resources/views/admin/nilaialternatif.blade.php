@@ -76,7 +76,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Hapus Mahasiswa</h5>
+                <h5 class="modal-title">Hapus Nilai Aternatif</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -213,9 +213,11 @@
 
 
 <script type="text/javascript">
+
     $( 'select[name="kriteria_id"]' ).change(function() {
         var kriteriaID = $(this).val();
         // console.log(kriteriaID);
+        
         if(kriteriaID){
             $.ajax({
                 url : '../getData/subbobot/' + kriteriaID,

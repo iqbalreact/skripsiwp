@@ -1388,7 +1388,7 @@ h3 {
 
 /* line 20, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
 .slider_area .single_slider {
-  height: 900px;
+  height: 600px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -2292,9 +2292,10 @@ h3 {
   top: 0;
   height: 100%;
   content: '';
-  background-image: url(../img/faq/anggrek.jpg);
+  /* background-image: url(../img/banner/angrek.jpeg); */
   background-repeat: no-repeat;
   background-size: cover;
+  /* height: 100px; */
 }
 
 @media (max-width: 767px) {

@@ -34,7 +34,7 @@ class HomeController extends Controller
         $kriteriaCount = count(Kriteria::All());
         $subkriteriaCount = count(Subkriteria::All());
         $nilaikriteriaCount = count(Alternatif_kriteria::All());
-        // echo $nilaikriteriaCount;
+        // echo $nilaikriteriaCount;    
         $jenisCount = count(Jenisanggrek::All());
         $penyakitCount = count(Penyakitanggrek::All());
         $saranCount = count(Saran::All());

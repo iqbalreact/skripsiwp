@@ -79,13 +79,13 @@ class GetDataController extends Controller
 
     public function updateJenisAnggrek(Request $request) {
         // dd($request->all());
-        if($request->has('image')) {
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $image->move(public_path('anggrek'), $filename);
-            $gambar = $request->file('image')->getClientOriginalName();
-            
-        }
+            if($request->has('image')) {
+                $image = $request->file('image');
+                $filename = $image->getClientOriginalName();
+                $image->move(public_path('anggrek'), $filename);
+                $gambar = $request->file('image')->getClientOriginalName();
+                
+            }
         // echo $gambar;
         DB::table('jenisanggreks')->where('id',$request->id)->update([
             'nama' => $request->nama,

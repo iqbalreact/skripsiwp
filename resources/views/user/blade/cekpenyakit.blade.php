@@ -22,7 +22,7 @@
                     <div class="col-lg-8">
                         <form action="{{route('perhitunganwp')}}" method="post">
                             @csrf
-                            <div class="row">
+                            <div class="row" style="margin-top: -100px">
                                 <div class="col-lg-12">
                                     <div class="apply_info_text text-center">
                                         <h3>Masukan Gejala Pada Tanaman Anggrek</h3>
@@ -37,6 +37,7 @@
                                         <input type="hidden" name="kriteria[]" value="{{$subkriterias->id}}">
                                         <select name="bobot[]" required>
                                             <option value="">Pilih</option>
+                                            {{-- <option value="1">Tidak Ada Gejala</option> --}}
                                             @foreach($subkriterias->Subkriterias as $sub)
                                                 <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                             @endforeach

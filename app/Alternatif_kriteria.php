@@ -11,8 +11,6 @@ class Alternatif_kriteria extends Model
     protected $fillable = [
         'alternatif_id', 'kriteria_id', 'bobotnilai',
     ];
-
-
     
 
 }
