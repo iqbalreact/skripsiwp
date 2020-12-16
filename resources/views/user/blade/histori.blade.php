@@ -48,6 +48,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $historis->links() }}
                         </div>
 
 					</div>   

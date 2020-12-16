@@ -40,7 +40,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="10%">No</th>
+                                        <th style="20%">No</th>
                                         <th>Kemungkinan Penyakit</th>
                                         {{-- <th>Keterangan</th>
                                         <th>Solusi</th> --}}
@@ -78,19 +78,45 @@
                                         </td>
                                     </tr>
 
-                                    {{-- <tr>
+                                    <tr>
+                                        {{-- {{dd($dataVwp)}} --}}
                                         <td>2</td>
-                                        <td>{{$dataVwp[1]['nama']}}</td>
-                                        <td>{{getKeterangan($dataVwp[1]['id'])}}</td>
-                                        <td>{{getSolusi($dataVwp[1]['id'])}}</td>
+                                        <td>
+                                            <p>
+                                                {{$dataVwp[1]['nama']}}
+                                            </p>
+
+                                            <p>
+                                                <span><b>Keterangan : </b></span>{{getKeterangan($dataVwp[1]['id'])}}
+                                            </p>
+
+                                            <p>
+                                                <span><b>Solusi : </b></span>{{getSolusi($dataVwp[1]['id'])}}
+                                            </p>
+                                            
+                                        </td>
                                     </tr>
 
                                     <tr>
+                                        {{-- {{dd($dataVwp)}} --}}
                                         <td>3</td>
-                                        <td>{{$dataVwp[2]['nama']}}</td>
-                                        <td>{{getKeterangan($dataVwp[2]['id'])}}</td>
-                                        <td>{{getSolusi($dataVwp[2]['id'])}}</td>
-                                    </tr> --}}
+                                        <td>
+                                            <p>
+                                                {{$dataVwp[2]['nama']}}
+                                            </p>
+
+                                            <p>
+                                                <span><b>Keterangan : </b></span>{{getKeterangan($dataVwp[2]['id'])}}
+                                            </p>
+
+                                            <p>
+                                                <span><b>Solusi : </b></span>{{getSolusi($dataVwp[2]['id'])}}
+                                            </p>
+                                            
+                                        </td>
+                                    </tr>
+
+                                    
                                 </tbody>
                             </table>
                         </div>

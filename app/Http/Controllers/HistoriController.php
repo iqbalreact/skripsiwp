@@ -26,8 +26,7 @@ class HistoriController extends Controller
             $d[]= ['nama'=> $value->nama, 'gejala' => $gejalas, 'hasil' => $value->hasil];
         }
 
-        // return $d;
-        return view ('user.blade.histori', compact('d')); 
+        return view ('user.blade.histori', compact('d','historis')); 
     }
 
     /**
