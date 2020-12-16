@@ -29,6 +29,20 @@
                                         <p>Silahkan pilih gejala pada tanaman anggrek</p>
                                     </div>
                                 </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Nama Lengkap</label>
+                                        <input type="text" class="form-control input-lg" name="nama" placeholder="Masukan Nama Anda" required>
+                                    </div>
+
+                                    <span>Pilih Gejala Pada Tanaman</span>
+                                    <hr>
+
+                                </div>
+
+
+
                                 @if (count($subkriterias) != 0)
                                     @foreach ($subkriterias as $subkriterias)            
                                     <div class="col-md-12">

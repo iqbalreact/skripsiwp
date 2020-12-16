@@ -115,13 +115,13 @@
 
                         <label class="control-label col-lg-2">Nama Pengembang</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Anggrek..." required>
+                            <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Pengembang" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-2">Deskripsi</label>
                         <div class="col-lg-10">
-                            <textarea rows="3" cols="3" name="keterangan" class="form-control" placeholder="Keterangan Anggrek" required></textarea>
+                            <textarea rows="3" cols="3" name="keterangan" class="form-control" placeholder="Deskripsi" required></textarea>
                         </div>
                     </div>
                     <div class="form-group">

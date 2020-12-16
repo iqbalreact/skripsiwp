@@ -63,6 +63,7 @@ Route::get('/saran', 'UserController@saran')->name('saran');
 Route::post('/add-saran', 'UserController@addsaran')->name('add-saran');
 Route::post('/perhitunganwp', 'UserController@perhitunganWP')->name('perhitunganwp');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('histori', 'HistoriController');
 
 
 

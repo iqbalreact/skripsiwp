@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Tentang;
 use App\Jenisanggrek;
 use App\Penyakitanggrek;
+use App\Histori;
 use App\Subkriteria;
 use App\Kriteria;
 use App\Alternatif;
@@ -63,11 +64,12 @@ class UserController extends Controller
 
     public function perhitunganWP(Request $request)
     {   
+        // return $request->bobot;
         $dataalternatif = Alternatif::with('Kriterias')->get();
-
+        // return $request->kriteria;
         $Wj = DB::table('kriterias')->select('range')->sum('range');
         $rangekriteria = DB::table('kriterias')->select('*')->get();
-        
+        // return $rangekriteria;
         $kriteriaData = array();
         
         // Normalisasi Bobot Kriteria
@@ -82,9 +84,12 @@ class UserController extends Controller
         }
         // End Normalisasi Bobot
 
+        // return $normalisasi;
+        
         // mencocokan id kriteria dengan bobot
         foreach ($dataalternatif as $key => $item) {
             $nama = $item->nama;
+            $id_alternatif = $item->id;
             $datakriteria = $item->Kriterias;
             foreach ($datakriteria as $key => $value) {
                 $idkriteria = $value->id;
@@ -96,7 +101,7 @@ class UserController extends Controller
                     $bobot = $nilai['bobot'];
                     if($kriteriaid == $idkriteria){
                         $pangkat = pow($pivot, $bobot);
-                        $kriteriaData [] = array('nama' => $nama, 'kriteria' => $kriterianama, 'vektor' => $pangkat);
+                        $kriteriaData [] = array('id' => $id_alternatif, 'nama' => $nama, 'kriteria' => $kriterianama, 'vektor' => $pangkat);
                     }   
                 }                
             }
@@ -108,6 +113,8 @@ class UserController extends Controller
         foreach ($kriteriaData as $element) {
             $result[$element['nama']][] = $element;
         }
+
+ 
         // end grup 
 
         // Menentukan Nilai Vektor S Kriteria
@@ -116,13 +123,14 @@ class UserController extends Controller
             $nilaiawal = 1;
             foreach ($kali as $kalivektor => $valueNew) {
                 $nama = $valueNew['nama'];
+                $id = $valueNew['id'];
                 $nilai = $valueNew['vektor'];
                 $nilaiawal = $nilai * $nilaiawal;
             }
-            $totalVektorS [] = array ('nama'=>$nama, 'vektorS'=>$nilaiawal);
+            $totalVektorS [] = array ('id'=>$id, 'nama'=>$nama, 'vektorS'=>$nilaiawal);
         }
         // End Menentukan Nilai Vektor S
-    
+        // return $totalVektorS;
 
         //Data User 
         // return response()->json($request);
@@ -173,6 +181,7 @@ class UserController extends Controller
                 $nilai = $valueNewUser['vektor'];
                 $nilaiawal = $nilai * $nilaiawal;
             }
+            
             $totalVektorSUser [] = ($nilaiawal);
        
         // return response()->json(array('vektorWP' => $totalVektorS, 'vektorUser' => $totalVektorSUser));
@@ -194,6 +203,7 @@ class UserController extends Controller
         foreach ($totalVektorS as $key => $valueVektorS) {
             # code...
             $newAlternatif = $valueVektorS['nama'];
+            $idAlternatif = $valueVektorS['id'];
             $vektorAlternatif = $valueVektorS['vektorS'];
 
             $vektorVwp = $vektorAlternatif/$vj;
@@ -201,9 +211,11 @@ class UserController extends Controller
             // echo $newAlternatif." = ".$vektorVwp;
             // echo "<br>";
 
-            $dataVwp[] = array('nama'=>$newAlternatif, 'vektorv'=>$vektorVwp);
+            $dataVwp[] = array('id'=>$idAlternatif, 'nama'=>$newAlternatif, 'vektorv'=>$vektorVwp);
 
         }
+
+        // return $dataVwp;
 
         // Menentukan nilai VektorS/Vj ==> Data User
         $vektorVusers = $vektorUser/$vj;
@@ -225,6 +237,23 @@ class UserController extends Controller
         usort($dataVwp, function ($a, $b) {
             return $a['selisih'] <=> $b['selisih'];
         });
+
+
+        // Simpan data diagnosis 
+
+        $namaUser = $request->nama;
+        $dataGejala = serialize(array_combine($request->kriteria, $request->bobot));
+        $hasilDiagnosis = $dataVwp[0]['nama'];
+
+        $histori = new Histori;
+        $histori->nama = $namaUser;
+        $histori->gejala = $dataGejala;
+        $histori->hasil = $hasilDiagnosis;
+        
+        $histori->save();
+
+        // return $hasilDiagnosis;
+
         return view ('user.blade.hasil', compact('totalVektorS','totalVektorSUser','dataVwp','vektorVuser')); 
     }
     
