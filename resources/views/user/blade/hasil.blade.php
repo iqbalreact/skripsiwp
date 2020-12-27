@@ -48,17 +48,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- {{dd($dataVwp)}} --}}
-                                    {{-- @foreach ($dataVwp as $item)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$item['nama']}}</td>
-                                        <td>Lorem, ipsum dolor.</td>
-                                        <td>Lorem, ipsum dolor.</td> --}}
-                                        {{-- <td>{{$item['vektorv']}}</td> --}}
-                                        {{-- <td>{{$nilaivektor}}</td> --}}
-                                    {{-- </tr>
-                                    @endforeach --}}
                                     <tr>
                                         {{-- {{dd($dataVwp)}} --}}
                                         <td>1</td>
@@ -69,6 +58,7 @@
 
                                             <p>
                                                 <span><b>Keterangan : </b></span>{{getKeterangan($dataVwp[0]['id'])}}
+                                                {{-- <span><b>Keterangan : </b></span>{{getKeterangan($dataVwp[0]['id'])}} --}}
                                             </p>
 
                                             <p>

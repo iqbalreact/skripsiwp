@@ -254,6 +254,8 @@ class UserController extends Controller
 
         // return $hasilDiagnosis;
 
+        // return $dataVwp[0]['id'];
+
         return view ('user.blade.hasil', compact('totalVektorS','totalVektorSUser','dataVwp','vektorVuser')); 
     }
     

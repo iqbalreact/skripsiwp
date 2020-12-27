@@ -22,6 +22,8 @@ Route::group(['middleware'=> ['auth']], function() {
         Route::resource('/penyakitanggrek', 'PenyakitanggrekController');
         Route::resource('/tentang', 'TentangController');
         Route::resource('/saran', 'SaranController');
+        Route::get('/histori', 'HistoriAdminController@index');
+        
         Route::post('/updateTentang', 'GetDataController@updateTentang')->name('update-tentang');
         Route::post('/updateAlternatif', 'GetDataController@updateAlternatif')->name('update-alternatif');
         Route::post('/updateKriteria', 'GetDataController@updateKriteria')->name('update-kriteria');

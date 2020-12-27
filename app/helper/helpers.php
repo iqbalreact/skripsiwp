@@ -3,14 +3,15 @@
 use App\Alternatif;
 use App\Kriteria;
 use App\Subkriteria;
+// use DB;
 
 function getKeterangan($id) {
-    $ket = Alternatif::find($id)->first();
+    $ket = Alternatif::where('id',$id)->first();
     return $ket->deskripsi;
 }
 
 function getSolusi($id) {
-    $solusi = Alternatif::find($id)->first();
+    $solusi = Alternatif::where('id',$id)->first();
     return $solusi->solusi;
 }
 

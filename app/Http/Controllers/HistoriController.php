@@ -61,6 +61,8 @@ class HistoriController extends Controller
         //
     }
 
+    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -93,5 +95,10 @@ class HistoriController extends Controller
     public function destroy($id)
     {
         //
+        // return $id;
+        $histori = Histori::where('id', $id);
+        $histori->delete();
+        // $id->delete();
+        return redirect('admin/histori')->with('error', 'Berhasil Dihapus');
     }
 }

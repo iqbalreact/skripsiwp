@@ -35,6 +35,7 @@
                     <li><a href="{{url('/admin/jenisanggrek')}}"><i class="icon-pushpin"></i> <span>Kelola Jenis Anggrek</span></a></li>
                     <li><a href="{{url('/admin/penyakitanggrek')}}"><i class="icon-pushpin"></i> <span>Kelola Penyakit Anggrek</span></a></li>
                     <li><a href="{{url('/admin/saran')}}"><i class="icon-mailbox"></i> <span>Kelola Saran</span></a></li>
+                    <li><a href="{{url('/admin/histori')}}"><i class="icon-mailbox"></i> <span>Kelola Histori</span></a></li>
 
                 </ul>
             </div>
