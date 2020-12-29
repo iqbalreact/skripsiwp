@@ -28,9 +28,6 @@
         <h5 class="panel-title">Data Hisori</h5>
     </div>
 
-    {{-- <div class="panel-body">
-        <button type="button" class="btn bg-teal-400 btn-labeled" data-toggle="modal" data-target="#modal_add"><b><i class="icon-user-plus"></i></b> Tambah saran</button>
-    </div> --}}
 
     <table class="table table-striped">
         <thead>
