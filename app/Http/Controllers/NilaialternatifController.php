@@ -23,7 +23,7 @@ class NilaialternatifController extends Controller
         $nilaialternatifs = DB::table('alternatif_kriteria')
             ->join('alternatifs', 'alternatif_kriteria.alternatif_id', '=', 'alternatifs.id')
             ->join('kriterias', 'alternatif_kriteria.kriteria_id', '=', 'kriterias.id')
-            ->select('alternatif_kriteria.*', 'alternatifs.nama', 'kriterias.namakriteria',)
+            ->select('alternatif_kriteria.*', 'alternatifs.nama', 'kriterias.namakriteria')
             ->orderBy('alternatifs.nama')
             ->get();
 
