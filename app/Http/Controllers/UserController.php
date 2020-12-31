@@ -205,14 +205,13 @@ class UserController extends Controller
             $newAlternatif = $valueVektorS['nama'];
             $idAlternatif = $valueVektorS['id'];
             $vektorAlternatif = $valueVektorS['vektorS'];
-
             $vektorVwp = $vektorAlternatif/$vj;
 
             // echo $newAlternatif." = ".$vektorVwp;
             // echo "<br>";
 
             $dataVwp[] = array('id'=>$idAlternatif, 'nama'=>$newAlternatif, 'vektorv'=>$vektorVwp);
-
+        
         }
 
         // return $dataVwp;

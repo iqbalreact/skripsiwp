@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Sep 2020 pada 17.10
+-- Waktu pembuatan: 31 Des 2020 pada 04.47
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -42,13 +42,13 @@ CREATE TABLE `alternatifs` (
 --
 
 INSERT INTO `alternatifs` (`id`, `nama`, `deskripsi`, `solusi`, `created_at`, `updated_at`) VALUES
-(1, 'Busuk Hitam', 'Penyakit ini terutama dijumpai pada anggrek Cattleya sp, Phalaenopsis sp, dendrodium sp, epidendrum sp dan Oncidium sp. Infeksi tampak pada daun bercak berwarna ungu kecoklatan dikelilingi lingkran kuning. Batang dipangkalnya berwarna hitam, akar berwarna', 'lorem', '2020-02-07 01:04:44', '2020-02-10 21:38:23'),
-(2, 'Antraknosa', 'Penyakit ini dijumpai pada anggrek jenis Dendrobium sp, Arachnis sp, Ascocendo sp, Phalaenopsis sp, Vanda sp, Oncidium sp. Infeksi pada daun terdapat bercak cekung tidak beraturan berwarna coklat kehitaman mengumpul, dimulai dari ujung daun. Batang tampak', 'lorem', '2020-02-07 01:05:02', '2020-02-07 01:05:02'),
-(3, 'Layu Sclerotium', 'Penyakit ini menyerak jenis anggrek terrestrial seperti Vanda sp, Arachnis. Infeksi pada daun menjadi menguning dan layu dimulai dari daun muda. Pangkal batang membusuk membentuk benang jamur putih dan ada berbutir coklat. Akar membusuk berwarna hitam. Me', 'lorem', '2020-02-07 01:05:15', '2020-02-07 01:05:15'),
+(1, 'Busuk Hitam', 'Penyakit ini terutama dijumpai pada anggrek Cattleya sp, Phalaenopsis sp, dendrodium sp, epidendrum sp dan Oncidium sp. Infeksi tampak pada daun bercak berwarna ungu kecoklatan dikelilingi lingkran kuning. Batang dipangkalnya berwarna hitam, akar berwarna', 'lorem1', '2020-02-07 01:04:44', '2020-02-10 21:38:23'),
+(2, 'Antraknosa', 'Penyakit ini dijumpai pada anggrek jenis Dendrobium sp, Arachnis sp, Ascocendo sp, Phalaenopsis sp, Vanda sp, Oncidium sp. Infeksi pada daun terdapat bercak cekung tidak beraturan berwarna coklat kehitaman mengumpul, dimulai dari ujung daun. Batang tampak', 'lorem2', '2020-02-07 01:05:02', '2020-02-07 01:05:02'),
+(3, 'Layu Sclerotium', 'Penyakit ini menyerak jenis anggrek terrestrial seperti Vanda sp, Arachnis. Infeksi pada daun menjadi menguning dan layu dimulai dari daun muda. Pangkal batang membusuk membentuk benang jamur putih dan ada berbutir coklat. Akar membusuk berwarna hitam. Me', 'lorem3', '2020-02-07 01:05:15', '2020-02-07 01:05:15'),
 (4, 'Virus Mosaik Cymbidium', 'Dijumpai di 8 genera, yaitu Aranthera sp., Calanthe sp., Cattleya sp., Cymbidium sp., Gromatophyllum sp., Phalaenopsis sp., Oncidium sp., dan Vanda sp. Menyerang pada lingkungan yang lembab. Infeksi pada daun tampak bercak berwarna kuning pucat bentuk tid', 'lorem', '2020-02-07 01:05:29', '2020-02-07 01:05:29'),
 (5, 'Virus Mosaik Tembakau', 'Virus penyakit ini dikenal dengan virus bercak bercincin. Jenis anggrek yang biasa terserang virus ini mencangkup dendrobium sp, Epidendrum sp, Vanda sp, Cattleya sp, Oncidium sp, cymbidium sp, Phalaenopsis.Infeksi pada daun terdapat bercak bercincin dipe', 'lorem', '2020-02-07 01:05:42', '2020-02-07 01:05:42'),
 (6, 'Hawar Bunga', 'Penyakit ini menyerang pada cuaca lembab. Menyerang bunga dengan gejala bintik-bintik hitam, menguning, kering, membusuk pada kuncup. Penanganan dengan memberikan fungisida berupa protein harpin, mancozeb, bacillus subtilis+Trichoderma.', 'lorem', '2020-02-07 01:05:58', '2020-02-07 01:05:58'),
-(8, 'Rebah Bibit / Kecambah', 'Penyakit in dijumpai ada tanaman muda didalam kompot pada anggrek jenis  Cymbidium sp, Dendrobium sp, Oncidium sp. Infeksi pada daun mudah roboh dan ada bercak bening. Pangkal batang membusuk dan ada bercak bening, warna akar coklat kemerahan dibagian pan', '', '2020-02-07 01:11:58', '2020-09-14 07:25:48');
+(8, 'Rebah Bibit / Kecambah', 'Penyakit in dijumpai ada tanaman muda didalam kompot pada anggrek jenis  Cymbidium sp, Dendrobium sp, Oncidium sp. Infeksi pada daun mudah roboh dan ada bercak bening. Pangkal batang membusuk dan ada bercak bening, warna akar coklat kemerahan dibagian pan', 'lorem1', '2020-02-07 01:11:58', '2020-09-14 07:25:48');
 
 -- --------------------------------------------------------
 
@@ -120,6 +120,27 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `histori`
+--
+
+CREATE TABLE `histori` (
+  `id` int(5) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `gejala` varchar(225) NOT NULL,
+  `hasil` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `histori`
+--
+
+INSERT INTO `histori` (`id`, `nama`, `gejala`, `hasil`) VALUES
+(4, 'Andrianus Tinas1212', 'a:5:{i:3;s:1:\"4\";i:4;s:1:\"6\";i:5;s:1:\"3\";i:6;s:1:\"1\";i:7;s:1:\"1\";}', 'Rebah Bibit / Kecambah'),
+(5, 'Lidya', 'a:5:{i:3;s:1:\"3\";i:4;s:1:\"6\";i:5;s:1:\"6\";i:6;s:1:\"3\";i:7;s:1:\"3\";}', 'Layu Sclerotium');
 
 -- --------------------------------------------------------
 
@@ -342,7 +363,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'iqbaldev', 'iqbaldev@gmail.com', NULL, '$2y$10$LSSzltGgOj5NlHzHL7fJae6fUYqxwREKv3QjUhdCE5W97sdAKzfOW', NULL, '2020-02-07 01:04:19', '2020-02-07 01:04:19'),
-(2, 'admin', 'admin@mail.com', NULL, '$2y$10$U6yXIg9X6yGEn1kOnv4UDOwcBrKZYzKMvjoI9aF0RDZ5hlSllGK92', NULL, '2020-02-20 00:20:45', '2020-02-20 00:20:45');
+(2, 'admin', 'admin@mail.com', NULL, '$2y$10$U6yXIg9X6yGEn1kOnv4UDOwcBrKZYzKMvjoI9aF0RDZ5hlSllGK92', NULL, '2020-02-20 00:20:45', '2020-02-20 00:20:45'),
+(3, 'iqbaldev', 'mitneira@gmail.com', NULL, '$2y$10$A6s4KR14BvV2Up4NV72oMu2dHJITpkFT59nmjG3IXO9PKedA2Irk.', NULL, '2020-12-16 04:21:41', '2020-12-16 04:21:41');
 
 --
 -- Indexes for dumped tables
@@ -364,6 +386,12 @@ ALTER TABLE `alternatif_kriteria`
 -- Indeks untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `histori`
+--
+ALTER TABLE `histori`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -444,6 +472,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `histori`
+--
+ALTER TABLE `histori`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT untuk tabel `jenisanggreks`
 --
 ALTER TABLE `jenisanggreks`
@@ -489,7 +523,7 @@ ALTER TABLE `tentangs`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
