@@ -39,7 +39,8 @@
                                         <td>{{$item['nama']}}</td>
                                         <td>
                                             @foreach ($item['gejala'] as $k => $t)
-                                                {{ getKriteria($k). ' : ' .getSubkriteria($t) }}
+                                                {{-- {{$k}} : {{$t}} --}}
+                                                {{ getKriteria($k). ' : ' .getSubkriteria($k, $t) }}
                                                 <br>
                                             @endforeach
                                         </td>

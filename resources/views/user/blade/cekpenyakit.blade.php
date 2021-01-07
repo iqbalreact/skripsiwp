@@ -26,7 +26,7 @@
                                 <div class="col-lg-12">
                                     <div class="apply_info_text text-center">
                                         <h3>Masukan Gejala Pada Tanaman Anggrek</h3>
-                                        <p>Silahkan pilih gejala pada tanaman anggrek</p>
+                                        <p>Silahkan pilih gejala pada tanaman anggrek (Minimal 2)</p>
                                     </div>
                                 </div>
 
@@ -38,20 +38,15 @@
 
                                     <span>Pilih Gejala Pada Tanaman</span>
                                     <hr>
-
                                 </div>
-
-
-
                                 @if (count($subkriterias) != 0)
-                                    @foreach ($subkriterias as $subkriterias)            
+                                    @foreach ($subkriterias as $subkriterias)                                    
                                     <div class="col-md-12">
                                         <div class="single_field">
                                         <label for="">Kondisi <b>{{$subkriterias->namakriteria}}</b></label>
                                         <input type="hidden" name="kriteria[]" value="{{$subkriterias->id}}">
-                                        <select name="bobot[]" required>
+                                        <select name="bobot[]" class="form-control" required>
                                             <option value="">Pilih</option>
-                                            {{-- <option value="1">Tidak Ada Gejala</option> --}}
                                             @foreach($subkriterias->Subkriterias as $sub)
                                                 <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                             @endforeach

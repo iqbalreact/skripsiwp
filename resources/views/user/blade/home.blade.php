@@ -40,6 +40,8 @@
 
 
     @include('user.blade.footer')
+
+    @yield('js-section')
     <!-- link that opens popup -->
     <!-- JS here -->
     <script src="{{asset('user/js/vendor/modernizr-3.5.0.min.js')}}"></script>

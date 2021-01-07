@@ -20,8 +20,8 @@ function getKriteria($id) {
     return $kriteria->namakriteria;
 }
 
-function getSubkriteria($id) {
-    $sub = Subkriteria::where('id', $id)->first();
+function getSubkriteria($kriteria, $bobot) {
+    $sub = Subkriteria::where('bobotsub', $bobot)->where('kriteria_id', $kriteria)->first();
     return $sub['namasub'];
 }
 
