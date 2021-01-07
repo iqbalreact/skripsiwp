@@ -244,7 +244,7 @@ class UserController extends Controller
         $dataGejala = serialize(array_combine($request->kriteria, $request->bobot));
         
         $data = unserialize($dataGejala); 
-        return count($data);
+        // return count($data);
 
 
         $hasilDiagnosis = $dataVwp[0]['nama'];
@@ -256,7 +256,7 @@ class UserController extends Controller
         
         $histori->save();
 
-        return "Berhasil Buat Data";
+        // return "Berhasil Buat Data";
 
         return view ('user.blade.hasil', compact('totalVektorS','totalVektorSUser','dataVwp','vektorVuser')); 
     }
