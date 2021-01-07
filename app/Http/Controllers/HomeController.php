@@ -10,6 +10,7 @@ use App\Alternatif_kriteria;
 use App\Jenisanggrek;
 use App\Penyakitanggrek;
 use App\Saran;
+use App\Histori;
 
 class HomeController extends Controller
 {
@@ -38,7 +39,8 @@ class HomeController extends Controller
         $jenisCount = count(Jenisanggrek::All());
         $penyakitCount = count(Penyakitanggrek::All());
         $saranCount = count(Saran::All());
+        $historiCount = count(Histori::All());
 
-        return view('admin.dashboard', compact('alternatifCount','kriteriaCount','subkriteriaCount','nilaikriteriaCount','jenisCount','penyakitCount','saranCount'));
+        return view('admin.dashboard', compact('alternatifCount','kriteriaCount','subkriteriaCount','nilaikriteriaCount','jenisCount','penyakitCount','saranCount', 'historiCount'));
     }
 }

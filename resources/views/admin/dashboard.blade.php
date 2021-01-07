@@ -83,6 +83,16 @@
         <div class="panel text-center">
             <div class="panel-body">
                 <div class="content-group-sm svg-center position-relative" id="hours-available-progress">
+                    <h3>{{$historiCount}}</h3>
+                    <div>Data Histori</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel text-center">
+            <div class="panel-body">
+                <div class="content-group-sm svg-center position-relative" id="hours-available-progress">
                     <h3>{{$saranCount}}</h3>
                     <div>Data Saran</div>
                 </div>
