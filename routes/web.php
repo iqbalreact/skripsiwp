@@ -67,5 +67,7 @@ Route::post('/perhitunganwp', 'UserController@perhitunganWP')->name('perhitungan
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('histori', 'HistoriController');
 
-
+Route::get('hasil', function () {
+    return view ('user.blade.hasil');
+});
 

@@ -20,9 +20,8 @@
 			<div class="section-top-border">
                 <h3 class="mb-30">Hasil Analisis Penyakit Anggrek</h3>
                 <hr>
-                {{-- {{dd($dataVwp)}} --}}
                 <p>
-                    Berdasarkan gejala yang timbul,  tanaman anggrek Anda mengalami kemungkinan penyakit <strong>{{$dataVwp[0]['nama']}}</strong>.
+                    Berdasarkan gejala yang timbul,  tanaman anggrek Anda mengalami kemungkinan penyakit <strong id="hasilpenyakit"></strong>.
                 </p>
                 {{-- <p>Berdasarkan perhitungan di atas maka dapat disimpulkan USER memiliki tanaman 
                 anggrek yang  menderita penyakit <strong>{{$dataVwp[0]['nama']}}</strong> 
@@ -36,78 +35,94 @@
                     <div class="col-md-12">
 						<div class="single-defination">
                         <h4 class="mb-20">Daftar Kemungkinan Penyakit Anggrek</h4>
-                            {{-- {{print_r($normalisasi)}} --}}
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th style="20%">No</th>
                                         <th>Kemungkinan Penyakit</th>
-                                        {{-- <th>Keterangan</th>
-                                        <th>Solusi</th> --}}
-                                        {{-- <th>Nilai Vektor V Terdekat</th> --}}
+                                        {{-- {{-- <th>Keterangan</th> --}}
+                                        <th>Solusi</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     <tr>
-                                        {{-- {{dd($dataVwp)}} --}}
                                         <td>1</td>
+
                                         <td>
-                                            <p>
-                                                {{$dataVwp[0]['nama']}}
+                                            <p id="nama1">
+                                                
                                             </p>
 
-                                            <p>
-                                                <span><b>Keterangan : </b></span>{{getKeterangan($dataVwp[0]['id'])}}
-                                                {{-- <span><b>Keterangan : </b></span>{{getKeterangan($dataVwp[0]['id'])}} --}}
-                                            </p>
-
-                                            <p>
-                                                <span><b>Solusi : </b></span>{{getSolusi($dataVwp[0]['id'])}}
-                                            </p>
-                                            
                                         </td>
+
+                                        <td>
+
+
+                                            <p> 
+                                                
+                                                <span><b>Keterangan : </b> <span id="ket1"></span></span> <br>
+                                                <span><b>Solusi : </b> <span id="ket1"></span></span>
+
+                                            </p>
+
+                                        </td>
+
                                     </tr>
 
                                     <tr>
-                                        {{-- {{dd($dataVwp)}} --}}
                                         <td>2</td>
+
                                         <td>
-                                            <p>
-                                                {{$dataVwp[1]['nama']}}
+                                            <p id="nama2">
+                                                
                                             </p>
 
-                                            <p>
-                                                <span><b>Keterangan : </b></span>{{getKeterangan($dataVwp[1]['id'])}}
-                                            </p>
-
-                                            <p>
-                                                <span><b>Solusi : </b></span>{{getSolusi($dataVwp[1]['id'])}}
-                                            </p>
-                                            
                                         </td>
+
+                                        <td>
+
+
+                                            <p> 
+                                                
+                                                <span><b>Keterangan : </b> <span id="ket2"></span></span> <br>
+                                                <span><b>Solusi : </b> <span id="ket2"></span></span>
+
+                                            </p>
+
+                                        </td>
+
                                     </tr>
+
 
                                     <tr>
-                                        {{-- {{dd($dataVwp)}} --}}
                                         <td>3</td>
+
                                         <td>
-                                            <p>
-                                                {{$dataVwp[2]['nama']}}
+                                            <p id="nama3">
+                                                
                                             </p>
 
-                                            <p>
-                                                <span><b>Keterangan : </b></span>{{getKeterangan($dataVwp[2]['id'])}}
-                                            </p>
 
-                                            <p>
-                                                <span><b>Solusi : </b></span>{{getSolusi($dataVwp[2]['id'])}}
-                                            </p>
-                                            
                                         </td>
+                                        <td>
+
+
+                                            <p> 
+                                                
+                                                <span><b>Keterangan : </b> <span id="ket3"></span></span> <br>
+                                                <span><b>Solusi : </b> <span id="ket3"></span></span>
+
+                                            </p>
+
+                                        </td>
+
                                     </tr>
 
-                                    
+
                                 </tbody>
+
+
                             </table>
                         </div>
 					</div>   
@@ -123,7 +138,37 @@
 			</div>
 		</div>
 	</div>
-	<!-- End Align Area -->
+    <!-- End Align Area -->
+    
+    <script>
+
+        var hasil = "{{asset('storage/hasil.json')}}";        
+
+        $.ajaxSetup({ cache: true});
+        $.getJSON(hasil, function(response) {
+
+            // console.log(response[0][0]);
+
+            $('#hasilpenyakit').append(response[0][0]);
+            $('#nama1').append(response[0][0]);
+            $('#nama2').append(response[1][0]);
+            $('#nama3').append(response[2][0]);
+
+
+            $('#ket1').append(response[0][1]);
+            $('#ket2').append(response[1][1]);
+            $('#ket3').append(response[2][1]);
+
+            $('#sol1').append(response[0][2]);
+            $('#sol2').append(response[1][2]);
+            $('#sol3').append(response[2][2]);
+
+            $.ajaxSetup({ cache: false});
+        });
+
+
+
+    </script>
 
 @endsection
 

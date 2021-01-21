@@ -55,4 +55,7 @@
 	<!-- /page container -->
 
 </body>
+
+@yield('js-section')
+
 </html>

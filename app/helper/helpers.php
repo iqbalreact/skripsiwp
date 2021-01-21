@@ -7,6 +7,7 @@ use App\Subkriteria;
 
 function getKeterangan($id) {
     $ket = Alternatif::where('id',$id)->first();
+    // return $id;
     return $ket->deskripsi;
 }
 

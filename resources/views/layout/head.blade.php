@@ -13,7 +13,9 @@
 	<link href="{{asset('assets/css/components.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('assets/css/colors.css')}}" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
-
+	{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+	
+	
 	<!-- Core JS files -->
 	<script type="text/javascript" src="{{asset('assets/js/plugins/loaders/pace.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/core/libraries/jquery.min.js')}}"></script>

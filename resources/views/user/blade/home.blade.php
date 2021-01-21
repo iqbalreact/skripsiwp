@@ -7,11 +7,13 @@
     <title>Skripsi WP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('user/img/favicon.png')}}">
     <!-- Place favicon.ico in the root directory -->
-
+    
     <!-- CSS here -->
     <link rel="stylesheet" href="{{asset('user/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('user/css/owl.carousel.min.css')}}">
@@ -24,8 +26,14 @@
     <link rel="stylesheet" href="{{asset('user/css/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('user/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('user/css/slicknav.css')}}">
-
+    
     <link rel="stylesheet" href="{{asset('user/css/style.css')}}">
+        
+    <script src="{{asset('user/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script> 
+    
+
 
 </head>
 
@@ -41,11 +49,8 @@
 
     @include('user.blade.footer')
 
-    @yield('js-section')
-    <!-- link that opens popup -->
-    <!-- JS here -->
-    <script src="{{asset('user/js/vendor/modernizr-3.5.0.min.js')}}"></script>
-    <script src="{{asset('user/js/vendor/jquery-1.12.4.min.js')}}"></script>
+
+
     <script src="{{asset('user/js/popper.min.js')}}"></script>
     <script src="{{asset('user/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('user/js/owl.carousel.min.js')}}"></script>
@@ -76,5 +81,8 @@
 
     <script src="{{asset('user/js/main.js')}}"></script>
 </body>
+
+    
+@yield('js-section')
 
 </html>
