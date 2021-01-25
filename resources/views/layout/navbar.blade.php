@@ -18,7 +18,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{asset('../assets/images/image.png')}}" alt="">
+                    <img src="{{asset('assets/images/image.png')}}" alt="">
                     {{-- admin login name  --}}
                     <span>{{ Auth::user()->name }}</span>
                     <i class="caret"></i>
