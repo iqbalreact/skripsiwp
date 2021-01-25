@@ -62,7 +62,7 @@
                                             <p> 
                                                 
                                                 <span><b>Keterangan : </b> <span id="ket1"></span></span> <br>
-                                                <span><b>Solusi : </b> <span id="ket1"></span></span>
+                                                <span><b>Solusi : </b> <span id="sol1"></span></span>
 
                                             </p>
 
@@ -86,7 +86,7 @@
                                             <p> 
                                                 
                                                 <span><b>Keterangan : </b> <span id="ket2"></span></span> <br>
-                                                <span><b>Solusi : </b> <span id="ket2"></span></span>
+                                                <span><b>Solusi : </b> <span id="sol2"></span></span>
 
                                             </p>
 
@@ -111,7 +111,7 @@
                                             <p> 
                                                 
                                                 <span><b>Keterangan : </b> <span id="ket3"></span></span> <br>
-                                                <span><b>Solusi : </b> <span id="ket3"></span></span>
+                                                <span><b>Solusi : </b> <span id="sol3"></span></span>
 
                                             </p>
 

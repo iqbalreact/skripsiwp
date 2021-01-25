@@ -306,5 +306,12 @@ class UserController extends Controller
 
     }
     
+    public function hasil()
+    {
+        # code...
+
+        return view ('user.blade.hasil');
+    }
+    
 
 }

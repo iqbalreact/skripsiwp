@@ -180,7 +180,7 @@
                             // var nama3 = result[2]['nama'];
                             // window.location="hasil?id1="+id1+"&nama1="+nama1+"&id2="+id2+"&nama2="+nama2+"&id3="+id2+"&nama3="+nama3;
 
-                            window.location = "/hasil";
+                            window.location = "{{route('hasil')}}";
                         }
 
                         }
