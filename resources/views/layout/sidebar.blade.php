@@ -6,7 +6,7 @@
         <div class="sidebar-user">
             <div class="category-content">
                 <div class="media">
-                    <a href="#" class="media-left"><img src="{{asset('../assets/images/image.png')}}" class="img-circle img-sm" alt=""></a>
+                    <a href="#" class="media-left"><img src="{{asset('assets/images/image.png')}}" class="img-circle img-sm" alt=""></a>
                     <div class="media-body">
                         {{-- admin name section --}}
                         <span class="media-heading text-semibold">Hello, {{ Auth::user()->name }}</span>
