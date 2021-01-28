@@ -147,7 +147,7 @@
         $.ajaxSetup({ cache: true});
         $.getJSON(hasil, function(response) {
 
-            // console.log(response[0][0]);
+            console.log(response);
 
             $('#hasilpenyakit').append(response[0][0]);
             $('#nama1').append(response[0][0]);

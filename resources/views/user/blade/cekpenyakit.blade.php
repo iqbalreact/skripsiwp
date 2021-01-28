@@ -159,7 +159,7 @@
                     type :'post',
                     url :'{{route('perhitunganwp')}}',
                     data: $('form').serialize(),
-                    success: function(result){
+                success: function(result){
                         // console.log(result);
                         if (result == 'Pilih Minimal 2 Gejala!') {
                             // alert (result);
