@@ -293,7 +293,11 @@ class UserController extends Controller
             
             // $hasilakhir = $dataVwp;
 
+
+
+
             Storage::disk('public')->put('hasil.json', json_encode($datahasil));
+            Storage::disk('public')->put('contoh.json', json_encode($datahasil));
 
 
             return $datahasil;
