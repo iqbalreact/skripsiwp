@@ -284,27 +284,15 @@ class UserController extends Controller
             $datahasil = [];
 
             foreach ($dataVwp as $key => $value) {
+                // $id = $value['id'];
                 $nama = $value['nama'];
                 $ket = getKeterangan($value['id']);
                 $sol = getSolusi($value['id']);
                 $datahasil[] = [$nama, $ket, $sol];
             }
 
-            
-            // $hasilakhir = $dataVwp;
-
-
-
-
             Storage::disk('public')->put('hasil.json', json_encode($datahasil));
-            Storage::disk('public')->put('contoh.json', json_encode($datahasil));
-
-
             return $datahasil;
-           
-
-
-            // return view ('user.blade.hasil', compact('totalVektorS','totalVektorSUser','dataVwp','vektorVuser')); 
 
         }
 

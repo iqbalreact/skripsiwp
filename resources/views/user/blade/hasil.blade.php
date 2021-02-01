@@ -141,30 +141,70 @@
     <!-- End Align Area -->
     
     <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
 
-        var hasil = "{{asset('storage/hasil.json')}}";        
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
 
-        $.ajaxSetup({ cache: true});
-        $.getJSON(hasil, function(response) {
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
 
-            console.log(response);
+        var nama1 = getUrlParameter('nama1');
+        var nama2 = getUrlParameter('nama2');
+        var nama3 = getUrlParameter('nama3');
 
-            $('#hasilpenyakit').append(response[0][0]);
-            $('#nama1').append(response[0][0]);
-            $('#nama2').append(response[1][0]);
-            $('#nama3').append(response[2][0]);
+        var ket1 = getUrlParameter('ket1');
+        var ket2 = getUrlParameter('ket2');
+        var ket3 = getUrlParameter('ket3');
+
+        var sol1 = getUrlParameter('sol1');
+        var sol2 = getUrlParameter('sol2');
+        var sol3 = getUrlParameter('sol3');
 
 
-            $('#ket1').append(response[0][1]);
-            $('#ket2').append(response[1][1]);
-            $('#ket3').append(response[2][1]);
+        $('#nama1').append(nama1);
+        $('#nama2').append(nama2);
+        $('#nama3').append(nama3);
 
-            $('#sol1').append(response[0][2]);
-            $('#sol2').append(response[1][2]);
-            $('#sol3').append(response[2][2]);
+        $('#ket1').append(ket1);
+        $('#ket2').append(ket2);
+        $('#ket3').append(ket3);
 
-            $.ajaxSetup({ cache: false});
-        });
+        $('#sol1').append(sol1);
+        $('#sol2').append(sol2);
+        $('#sol3').append(sol3);
+
+
+        // var hasil = "{{asset('storage/hasil.json')}}";        
+
+        // $.ajaxSetup({ cache: true});
+        // $.getJSON(hasil, function(response) {
+
+        //     console.log(response);
+
+        //     $('#hasilpenyakit').append(response[0][0]);
+        //     $('#nama1').append(response[0][0]);
+        //     $('#nama2').append(response[1][0]);
+        //     $('#nama3').append(response[2][0]);
+
+
+        //     $('#ket1').append(response[0][1]);
+        //     $('#ket2').append(response[1][1]);
+        //     $('#ket3').append(response[2][1]);
+
+        //     $('#sol1').append(response[0][2]);
+        //     $('#sol2').append(response[1][2]);
+        //     $('#sol3').append(response[2][2]);
+
+        //     $.ajaxSetup({ cache: false});
+        // });
 
 
 

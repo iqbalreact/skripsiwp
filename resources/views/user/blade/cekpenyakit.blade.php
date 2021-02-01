@@ -47,7 +47,7 @@
                                     <label for="">Kondisi <b>{{$subkriterias[0]->namakriteria}}</b></label>
                                     <input type="hidden" id="kriteria1" name="kriteria1" value="{{$subkriterias[0]->id}}">
                                     <select name="bobot1" id="bobot1" class="form-control">
-                                        <option value="">Pilih</option>
+                                        <option value="1">Pilih</option>
                                         @foreach($subkriterias[0]->Subkriterias as $sub)
                                             <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                         @endforeach
@@ -60,7 +60,7 @@
                                     <label for="">Kondisi <b>{{$subkriterias[1]->namakriteria}}</b></label>
                                     <input type="hidden" id="kriteria2" name="kriteria2" value="{{$subkriterias[1]->id}}">
                                     <select name="bobot2" id="bobot2" class="form-control">
-                                        <option value="">Pilih</option>
+                                        <option value="1">Pilih</option>
                                         @foreach($subkriterias[1]->Subkriterias as $sub)
                                             <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                         @endforeach
@@ -73,7 +73,7 @@
                                     <label for="">Kondisi <b>{{$subkriterias[2]->namakriteria}}</b></label>
                                     <input type="hidden" id="kriteria3" name="kriteria3" value="{{$subkriterias[2]->id}}">
                                     <select name="bobot3" id="bobot3" class="form-control">
-                                        <option value="">Pilih</option>
+                                        <option value="1">Pilih</option>
                                         @foreach($subkriterias[2]->Subkriterias as $sub)
                                             <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                         @endforeach
@@ -86,7 +86,7 @@
                                     <label for="">Kondisi <b>{{$subkriterias[3]->namakriteria}}</b></label>
                                     <input type="hidden" id="kriteria4" name="kriteria4" value="{{$subkriterias[3]->id}}">
                                     <select name="bobot4" id="bobot4" class="form-control">
-                                        <option value="">Pilih</option>
+                                        <option value="1">Pilih</option>
                                         @foreach($subkriterias[3]->Subkriterias as $sub)
                                             <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                         @endforeach
@@ -99,7 +99,7 @@
                                     <label for="">Kondisi <b>{{$subkriterias[4]->namakriteria}}</b></label>
                                     <input type="hidden" id="kriteria5" name="kriteria5" value="{{$subkriterias[4]->id}}">
                                     <select name="bobot5" id="bobot5" class="form-control">
-                                        <option value="">Pilih</option>
+                                        <option value="1">Pilih</option>
                                         @foreach($subkriterias[4]->Subkriterias as $sub)
                                             <option value="{{$sub->bobotsub}}">{{$sub->namasub}}</option>
                                         @endforeach
@@ -166,21 +166,28 @@
                             swal("Oops",result,"error");
                         }
                         else{
+
+                            
                             // console.log(result[0]);
                             swal("Good job!", "Melakukan Diagnosis" ,"success");
 
                             // $('#form-data').remove();
+
+                            var nama1 = result[0][0];
+                            var nama2 = result[1][0];
+                            var nama3 = result[2][0];
+
                             
-                            // var id1 = result[0]['id'];
-                            // var id2 = result[1]['id'];
-                            // var id3 = result[2]['id'];
+                            var ket1 = result[0][1];
+                            var ket2 = result[1][1];
+                            var ket3 = result[2][1];
 
-                            // var nama1 = result[0]['nama'];
-                            // var nama2 = result[1]['nama'];
-                            // var nama3 = result[2]['nama'];
-                            // window.location="hasil?id1="+id1+"&nama1="+nama1+"&id2="+id2+"&nama2="+nama2+"&id3="+id2+"&nama3="+nama3;
 
-                            window.location = "{{route('hasil')}}";
+                            var sol1 = result[0][2];
+                            var sol2 = result[1][2];
+                            var sol3 = result[2][2];
+
+                            window.location="hasil?nama1="+nama1+"&nama2="+nama2+"&nama3="+nama3+"&ket1="+ket1+"&ket2="+ket2+"&ket3="+ket3+"&sol1="+sol1+"&sol2="+sol2+"&sol3="+sol3;
                         }
 
                         }
