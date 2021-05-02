@@ -78,32 +78,47 @@ class GetDataController extends Controller
     }
 
     public function updateJenisAnggrek(Request $request) {
-        // dd($request->all());
-            if($request->has('image')) {
-                $image = $request->file('image');
-                $filename = $image->getClientOriginalName();
-                $image->move(public_path('anggrek'), $filename);
-                $gambar = $request->file('image')->getClientOriginalName();
-                
+
+        $images = array();
+        // $images = array();
+        
+        if($request->has('image')) {
+            $files = $request->file('image');
+            foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path('anggrek'), $filename);
+                $images [] = $filename;
             }
+            $gambar = implode("|",$images);
+            // $anggrek->gambar = $gambar;
+
+        }
+
         // echo $gambar;
         DB::table('jenisanggreks')->where('id',$request->id)->update([
             'nama' => $request->nama,
             'keterangan' => $request->keterangan,
             'gambar' => $gambar,
         ]);
+
+        
         return redirect()->back();
     }
 
     public function updatePenyakitAnggrek(Request $request) {
-        if($request->has('image')) {
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $image->move(public_path('penyakit'), $filename);
-            $gambar = $request->file('image')->getClientOriginalName();
-            
-        }
+        $images = array();
         
+        if($request->has('image')) {
+            $files = $request->file('image');
+            foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path('penyakit'), $filename);
+                $images [] = $filename;
+            }
+            $gambar = implode("|",$images);
+
+        }
+
         DB::table('penyakitanggreks')->where('id',$request->id)->update([
             'nama' => $request->nama,
             'keterangan' => $request->keterangan,

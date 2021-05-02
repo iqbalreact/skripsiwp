@@ -33,6 +33,8 @@
 
     </div>
 
+    
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -50,16 +52,19 @@
             @if (count($jenisanggreks) != 0)
 
                 @foreach ($jenisanggreks as $jenisanggrek => $key)
-               
+                
                 <tr>
                     <td>{{$no++}}</td>
-                    {{-- <td>{{$jenisanggrek->id }}</td> --}}
                     <td>{{$key->nama }}</td>
                     <td width="50%"><span>
                         {{$key->keterangan }}
-                        {{-- Lorem ipsum dolor sit amet consectetur adipisicing elit. At autem culpa, et maiores laborum similique in ex debitis eos provident natus, accusamus nam obcaecati? Sint esse repudiandae odit velit quibusdam?     --}}
                     </span></td>
-                    <td><img width="150px" src="{{ url('/anggrek/'.$key->gambar) }}"></td>
+                    <td>
+
+                        @foreach (explode('|', $key->gambar) as $image)
+                            <img style="width:300px" src="{{ url('/anggrek/'.$image) }}"> <br>
+                        @endforeach
+                        
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-warning" title="Edit" onclick="getDataJenisAnggrek({{$key->id}})"><i class="icon-pencil7"></i></button>
@@ -128,7 +133,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">Gambar</label>
                         <div class="col-lg-10">
-                            <input type="file" class="form-control" name="image" placeholder="Upload image" required>
+                            <input type="file" class="form-control" name="image[]" placeholder="Upload image" required multiple>
                         </div>
                     </div>
                 </fieldset>      
@@ -174,7 +179,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2">Gambar</label>
                             <div class="col-lg-10">
-                                <input type="file" class="form-control" name="image" placeholder="Upload image" required>
+                                <input type="file" class="form-control" name="image[]" placeholder="Upload image" required multiple>
                             </div>
                         </div>
                     </fieldset>      

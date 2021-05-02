@@ -25,8 +25,19 @@
                         
                         <div class="col-md-4">
                             <div class="single-defination text-center">
-                                <h4 class="mb-20">{{$penyakitanggrek->nama}}</h4>
-                                <img width="300px" src="{{ url('/penyakit/'.$penyakitanggrek->gambar) }}">
+                                <h4 class="mb-30">{{$penyakitanggrek->nama}}</h4>
+                                <div class="owl-carousel owl-theme">
+                                        
+                                    @foreach (explode('|', $penyakitanggrek->gambar) as $image)
+                                    <div class="item">
+                                        <img width="300px" height="300px" src="{{ url('/penyakit/'.$image) }}">
+                                    </div>
+                                    <br>
+                                    @endforeach
+                                </div>
+
+                                
+                                {{-- <img width="300px" src="{{ url('/penyakit/'.$penyakitanggrek->gambar) }}"> --}}
                                 <p style="text-align : justify"><b>Keterangan :</b> {{$penyakitanggrek->keterangan}}</p>
                             </div>
                         </div>                    
@@ -38,5 +49,21 @@
 		</div>
 	</div>
 	<!-- End Align Area -->
+
+    <script>
+
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+                loop:true,
+                margin:10,
+                autoWidth:false,
+                // nav:true,
+                singleItem:true,
+                items: 1,
+                navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>']
+            });
+        });
+
+    </script>
 
 @endsection

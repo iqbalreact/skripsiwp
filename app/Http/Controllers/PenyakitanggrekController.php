@@ -43,16 +43,29 @@ class PenyakitanggrekController extends Controller
         $anggrek = new Penyakitanggrek;
         $anggrek->nama = $request->nama;
         $anggrek->keterangan = $request->keterangan;
-        // $anggrek = $request->file('gambar');
-        // $tujuan_upload = 'upload/anggrek';
-        // $anggrek->move($tujuan_upload,$anggrek->getClientOriginalName());
+
+
+        $images = array();
+        
         if($request->has('image')) {
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            // dd($image);
-            $image->move(public_path('penyakit'), $filename);
-            $anggrek->gambar = $request->file('image')->getClientOriginalName();
+            $files = $request->file('image');
+            foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path('penyakit'), $filename);
+                $images [] = $filename;
+            }
+            $gambar = implode("|",$images);
+            $anggrek->gambar = $gambar;
+
         }
+
+        // if($request->has('image')) {
+        //     $image = $request->file('image');
+        //     $filename = $image->getClientOriginalName();
+        //     // dd($image);
+        //     $image->move(public_path('penyakit'), $filename);
+        //     $anggrek->gambar = $request->file('image')->getClientOriginalName();
+        // }
 
         $anggrek->save();
         return redirect()->back()->with('success', 'Berhasil menambahkan Penyakit Anggrek');

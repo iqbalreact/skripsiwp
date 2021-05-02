@@ -6,19 +6,29 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="bradcam_text">
-                            <h3>Berikan Saran Anda</h3>
-                        </div>
+                      <div class="bradcam_text">
+                        <h3>Berikan Saran Anda</h3>
+                      </div>
                     </div>
                 </div>
+              </div>
             </div>
-        </div>
+            
         <!--/ bradcam_area  -->
       <!-- ================ contact section start ================= -->
       <section class="contact-section section_padding">
         <div class="container">
           <div class="row" style="margin-top: -100px">
+            
             <div class="col-12">
+
+              @if(session()->has('message'))
+              <div class="alert alert-primary">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ session()->get('message') }}
+              </div>
+              @endif
+              
               <h2 class="contact-title">Tulis Saran Anda Disini</h2>
             </div>
             <div class="col-lg-8">

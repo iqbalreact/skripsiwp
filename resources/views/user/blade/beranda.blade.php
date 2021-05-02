@@ -8,7 +8,7 @@
                     <div class="row align-items-center justify-content-center">
                         <div class="col-lg-12 col-md-12">
                             <div class="slider_text">
-                                <h3 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay=".1s">Sistem Deteksi Penyakit Anggrek</h3>
+                                <h3 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay=".1s">Sistem Diagnosis Penyakit Anggrek</h3>
                                 <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
                                     <a href="{{url('/cekpenyakit')}}" class="boxed-btn3">Cek Penyakit Anggrek</a>
                                 </div>

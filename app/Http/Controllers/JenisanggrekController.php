@@ -18,6 +18,8 @@ class JenisanggrekController extends Controller
     {
         //
         $jenisanggreks = Jenisanggrek::All();
+
+        // return $jenisanggreks;
         return view ('admin.jenisanggrek', ['jenisanggreks' => $jenisanggreks]);
 
     }
@@ -41,23 +43,31 @@ class JenisanggrekController extends Controller
     public function store(Request $request)
     {
         //
+
+
+        // return $request;
+
         $anggrek = new Jenisanggrek;
         $anggrek->nama = $request->nama;
         $anggrek->keterangan = $request->keterangan;
         // $anggrek = $request->file('gambar');
         // $tujuan_upload = 'upload/anggrek';
         // $anggrek->move($tujuan_upload,$anggrek->getClientOriginalName());
+        $images = array();
+        
         if($request->has('image')) {
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            // dd($image);
-            $image->move(public_path('anggrek'), $filename);
-            $anggrek->gambar = $request->file('image')->getClientOriginalName();
-        }
+            $files = $request->file('image');
+            foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path('anggrek'), $filename);
+                $images [] = $filename;
+            }
+            $gambar = implode("|",$images);
+            $anggrek->gambar = $gambar;
 
+        }
         $anggrek->save();
         return redirect()->back();
-
     }
 
     /**
@@ -104,7 +114,6 @@ class JenisanggrekController extends Controller
     {
         //
         $data = Jenisanggrek::findOrFail($jenisanggrek);
-        // dd($data[0]->gambar);
         $directory = 'anggrek/'.$data[0]->gambar;
         File::delete($directory);
         $data->each->delete();

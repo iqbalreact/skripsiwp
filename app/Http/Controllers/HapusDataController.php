@@ -21,9 +21,13 @@ class HapusDataController extends Controller
     public function hapusJenis(Request $jenis)
     {
         $data = Jenisanggrek::findOrFail($jenis);
-        // dd($data[0]->gambar);
-        $directory = 'anggrek/'.$data[0]->gambar;
-        File::delete($directory);
+
+        $gambar = explode("|",$data[0]->gambar);
+        foreach ($gambar as $filename) {
+            # code...
+            $directory = 'anggrek/'.$filename;
+            File::delete($directory);
+        }
         $data->each->delete();
         return redirect()->back();
     }
@@ -32,8 +36,14 @@ class HapusDataController extends Controller
     {
         $data = Penyakitanggrek::findOrFail($jenis);
         // dd($data[0]->gambar);
-        $directory = 'anggrek/'.$data[0]->gambar;
-        File::delete($directory);
+        $gambar = explode("|",$data[0]->gambar);
+        foreach ($gambar as $filename) {
+            # code...
+            $directory = 'penyakit/'.$filename;
+            File::delete($directory);
+        }
+        // $directory = 'anggrek/'.$data[0]->gambar;
+        // File::delete($directory);
         $data->each->delete();
         return redirect()->back();
     }

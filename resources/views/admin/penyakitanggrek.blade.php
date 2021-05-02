@@ -53,7 +53,20 @@
                     {{-- <td>{{$penyakitanggrek->id }}</td> --}}
                     <td>{{$penyakitanggrek->nama }}</td>
                     <td>{{$penyakitanggrek->keterangan }}</td>
-                    <td><img width="150px" src="{{ url('/penyakit/'.$penyakitanggrek->gambar) }}"></td>
+                    <td>
+                        
+                        <div class="owl-carousel owl-theme">
+                                        
+                            @foreach (explode('|', $penyakitanggrek->gambar) as $image)
+                            <div class="item">
+                                <img width="150px" height="150px" src="{{ url('/penyakit/'.$image) }}">
+                            </div> <br>
+                            @endforeach
+                        </div>
+                        {{-- @foreach (explode('|', $penyakitanggrek->gambar) as $image)
+                        <img style="width:200px" src="{{ url('/penyakit/'.$image) }}">
+                        @endforeach --}}
+                        {{-- <img width="150px" src="{{ url('/penyakit/'.$penyakitanggrek->gambar) }}"></td> --}}
                     
                     <td class="text-center">
                         <div class="btn-group">
@@ -127,7 +140,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">Gambar</label>
                         <div class="col-lg-10">
-                            <input type="file" class="form-control" name="image" placeholder="Upload image" required>
+                            <input type="file" class="form-control" name="image[]" placeholder="Upload image" required multiple>
                         </div>
                     </div>
                 </fieldset>      
@@ -174,7 +187,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2">Gambar</label>
                             <div class="col-lg-10">
-                                <input type="file" class="form-control" name="image" placeholder="Upload image" required>
+                                <input type="file" class="form-control" name="image[]" placeholder="Upload image" required multiple>
                             </div>
                         </div>
                     </fieldset>      
@@ -189,7 +202,22 @@
     </div>
 </div>
 <!-- /edit modal -->
+<script>
 
+
+    // $(document).ready(function(){
+    //     $(".owl-carousel").owlCarousel({
+    //         loop:true,
+    //         margin:10,
+    //         autoWidth:false,
+    //         // nav:true,
+    //         singleItem:true,
+    //         items: 1,
+    //         navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>']
+    //     });
+    // });
+
+</script>
 
 <script>
     var url_id = '{{ url('getData/penyakitanggrek')}}';

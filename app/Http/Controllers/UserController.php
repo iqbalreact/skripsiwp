@@ -55,7 +55,7 @@ class UserController extends Controller
         $saran->saran = $request->saran;
         $saran->save();
         
-        return redirect('/');
+        return redirect('/saran')->with('message', 'Saran Berhasil Diberikan!');
     }
 
     public function cekpenyakit()
